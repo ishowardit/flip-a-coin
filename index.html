@@ -16,157 +16,152 @@
 }
 body.light{--bg:#F4F1EA;--bg2:#ECEAE3;--bg3:#E2DFD8;--text:#1A1A1A;--muted:#8A8070;--border:rgba(0,0,0,0.1)}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:1.5rem 1rem 3rem;transition:background .3s,color .3s}
-
-/* topbar */
 .topbar{width:100%;max-width:460px;display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
 h1{font-family:'DM Mono',monospace;font-size:.95rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .top-btns{display:flex;gap:8px}
 .icon-btn{background:var(--bg2);border:1px solid var(--border);border-radius:8px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;transition:background .15s}
 .icon-btn:hover{background:var(--bg3)}
-
-/* ── WALLET ── */
+/* wallet */
 .wallet{width:100%;max-width:460px;background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:16px 20px;margin-bottom:1.2rem;position:relative;overflow:hidden}
 .wallet::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(232,184,32,.06),transparent 70%);pointer-events:none}
 .wallet-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
 .wallet-label{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .wallet-bal{font-family:'DM Mono',monospace;font-size:2rem;font-weight:500;color:var(--gold-l);line-height:1;transition:color .3s}
-.wallet-bal.up{color:var(--green)}
-.wallet-bal.down{color:var(--red)}
+.wallet-bal.up{color:var(--green)}.wallet-bal.down{color:var(--red)}
 .wallet-sub{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);margin-top:3px}
 .wallet-badges{display:flex;gap:6px;flex-wrap:wrap}
 .badge{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.08em;padding:3px 10px;border-radius:20px;border:1px solid var(--border)}
 .badge.green{color:var(--green);border-color:rgba(74,222,128,.25);background:rgba(74,222,128,.06)}
-.badge.red  {color:var(--red);  border-color:rgba(248,113,113,.25);background:rgba(248,113,113,.06)}
-.badge.gold {color:var(--gold-l);border-color:rgba(232,184,32,.3);background:rgba(232,184,32,.07)}
-
-/* delta popup */
-.delta{position:fixed;font-family:'DM Mono',monospace;font-size:1.4rem;font-weight:500;pointer-events:none;z-index:1000;opacity:0;transition:none}
+.badge.red{color:var(--red);border-color:rgba(248,113,113,.25);background:rgba(248,113,113,.06)}
+.badge.gold{color:var(--gold-l);border-color:rgba(232,184,32,.3);background:rgba(232,184,32,.07)}
+.delta{position:fixed;font-family:'DM Mono',monospace;font-size:1.4rem;font-weight:500;pointer-events:none;z-index:1000;opacity:0}
 .delta.show{animation:floatUp .9s ease-out forwards}
 @keyframes floatUp{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-60px)}}
-
-/* wager section */
+/* wager */
 .wager-wrap{width:100%;max-width:460px;margin-bottom:1rem}
 .wager-label{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:flex;justify-content:space-between}
 .wager-label span{color:var(--gold-l)}
-.wager-slider{width:100%;accent-color:var(--gold-m);height:4px;cursor:pointer;margin-bottom:10px}
+.wager-slider{width:100%;accent-color:var(--gold-m);cursor:pointer;margin-bottom:10px}
 .wager-presets{display:flex;gap:6px;flex-wrap:wrap}
 .preset{font-family:'DM Mono',monospace;font-size:.7rem;padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--bg2);color:var(--muted);cursor:pointer;transition:all .15s;letter-spacing:.06em}
 .preset:hover,.preset.on{border-color:var(--gold-m);color:var(--gold-l);background:rgba(232,184,32,.08)}
-
 /* skin selector */
 .skin-bar{display:flex;gap:8px;margin-bottom:1.2rem;flex-wrap:wrap;justify-content:center}
 .skin-btn{padding:5px 14px;border-radius:20px;font-size:.72rem;font-family:'DM Mono',monospace;letter-spacing:.1em;cursor:pointer;border:1px solid var(--border);background:var(--bg2);color:var(--muted);transition:all .15s}
 .skin-btn.on{color:var(--text);border-color:var(--gold-m)}
-
 /* coin */
-.scene{width:200px;height:200px;perspective:900px;cursor:pointer;margin-bottom:1rem}
+.scene{width:220px;height:220px;perspective:900px;cursor:pointer;margin-bottom:1rem}
 .coin{width:100%;height:100%;position:relative;transform-style:preserve-3d}
-.face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;user-select:none}
-.face::before{content:'';position:absolute;inset:8px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.28);pointer-events:none}
+.face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
 .face.tails{transform:rotateY(180deg)}
-.face-symbol{font-size:68px;line-height:1;filter:drop-shadow(0 2px 5px rgba(0,0,0,.3))}
-.face-label{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:500}
-
-.s-classic .face.heads{background:radial-gradient(circle at 38% 35%,#FFF3A0,#F9E07A 30%,#E8B820 65%,#A07A00);border:5px solid #E8B820;box-shadow:inset 0 3px 8px rgba(255,255,255,.5),inset 0 -4px 10px rgba(0,0,0,.28),0 0 50px rgba(232,184,32,.2)}
-.s-classic .face.heads .face-label{color:#A07A00}
-.s-classic .face.tails{background:radial-gradient(circle at 38% 35%,#fff,#E8EAF0 30%,#9DA3B4 65%,#4A5070);border:5px solid #9DA3B4;box-shadow:inset 0 3px 8px rgba(255,255,255,.5),inset 0 -4px 10px rgba(0,0,0,.28)}
-.s-classic .face.tails .face-label{color:#4A5070}
-.s-copper .face.heads{background:radial-gradient(circle at 38% 35%,#FFD0A0,#F4A96A 30%,#C8722A 65%,#7A3E0A);border:5px solid #C8722A;box-shadow:inset 0 3px 8px rgba(255,255,255,.4),inset 0 -4px 10px rgba(0,0,0,.3),0 0 50px rgba(200,114,42,.25)}
-.s-copper .face.heads .face-label{color:#7A3E0A}
-.s-copper .face.tails{background:radial-gradient(circle at 38% 35%,#FFE0C0,#E09060 30%,#A05030 65%,#602010);border:5px solid #A05030;box-shadow:inset 0 3px 8px rgba(255,255,255,.4),inset 0 -4px 10px rgba(0,0,0,.3)}
-.s-copper .face.tails .face-label{color:#3A1008}
-.s-bitcoin .face.heads{background:radial-gradient(circle at 38% 35%,#FFE8A0,#FFD97A 30%,#F7931A 65%,#8B4A00);border:5px solid #F7931A;box-shadow:inset 0 3px 8px rgba(255,255,255,.5),inset 0 -4px 10px rgba(0,0,0,.3),0 0 60px rgba(247,147,26,.3)}
-.s-bitcoin .face.heads .face-label{color:#8B4A00}
-.s-bitcoin .face.tails{background:radial-gradient(circle at 38% 35%,#FFE8A0,#F0C040 30%,#C08010 65%,#704000);border:5px solid #C08010;box-shadow:inset 0 3px 8px rgba(255,255,255,.5),inset 0 -4px 10px rgba(0,0,0,.3)}
-.s-bitcoin .face.tails .face-label{color:#402000}
-.s-ancient .face.heads{background:radial-gradient(circle at 38% 35%,#D0E8B8,#B8D4A0 30%,#6B9A4E 65%,#2E4A1A);border:5px solid #6B9A4E;box-shadow:inset 0 3px 8px rgba(255,255,255,.4),inset 0 -4px 10px rgba(0,0,0,.35),0 0 50px rgba(107,154,78,.25)}
-.s-ancient .face.heads .face-label{color:#2E4A1A}
-.s-ancient .face.tails{background:radial-gradient(circle at 38% 35%,#C8D8B0,#8AAA68 30%,#507840 65%,#284820);border:5px solid #507840;box-shadow:inset 0 3px 8px rgba(255,255,255,.4),inset 0 -4px 10px rgba(0,0,0,.35)}
-.s-ancient .face.tails .face-label{color:#182810}
-
+.face svg{width:100%;height:100%;display:block;border-radius:50%}
 /* result */
 .result{font-family:'DM Mono',monospace;font-size:clamp(1.6rem,5vw,2.2rem);font-weight:500;letter-spacing:.04em;min-height:2.8rem;text-align:center;transition:opacity .15s}
 .result.h-txt{color:var(--gold-l)}.result.t-txt{color:var(--sil-l)}.result.idle{color:var(--muted);font-size:.95rem;letter-spacing:.15em}
-.streak{font-size:.76rem;color:var(--muted);letter-spacing:.1em;min-height:1.2rem;text-align:center;margin-bottom:1rem;font-family:'DM Mono',monospace}
+.streak{font-size:.76rem;color:var(--muted);letter-spacing:.1em;min-height:1.2rem;text-align:center;margin-bottom:.8rem;font-family:'DM Mono',monospace}
 .streak.hot{color:var(--orange)}
-
-/* bet buttons */
+/* bets */
 .bet-row{display:flex;gap:10px;margin-bottom:.5rem;width:100%;max-width:460px}
 .bet-btn{flex:1;padding:11px 10px;border-radius:10px;border:1px solid var(--border);background:var(--bg2);font-family:'DM Mono',monospace;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;color:var(--muted);transition:all .15s;display:flex;flex-direction:column;align-items:center;gap:2px}
 .bet-btn:hover{border-color:var(--gold-m);color:var(--text)}
 .bet-btn.sh{border-color:var(--gold-m);color:var(--gold-l);background:rgba(232,184,32,.1)}
 .bet-btn.st{border-color:var(--sil-m);color:var(--sil-l);background:rgba(157,163,180,.1)}
-.bet-btn.disabled-bet{opacity:.4;cursor:not-allowed}
 .bet-payout{font-size:.62rem;color:var(--muted);letter-spacing:.06em}
 .bet-btn.sh .bet-payout,.bet-btn.st .bet-payout{color:inherit;opacity:.7}
-
-/* big action row */
-.action-row{display:flex;gap:10px;align-items:center;margin-bottom:1.4rem;width:100%;max-width:460px}
-.btn-flip{background:var(--gold-m);color:#1A1200;border:none;border-radius:10px;padding:14px 0;flex:1;font-family:'DM Mono',monospace;font-size:.85rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:background .15s,transform .1s,opacity .15s}
+/* action row */
+.action-row{display:flex;gap:10px;align-items:center;margin-bottom:1.4rem;width:100%;max-width:460px;position:relative}
+.flip-wrap{flex:1;position:relative;display:flex;align-items:center;justify-content:center}
+.orb-ring{position:absolute;inset:-14px;border-radius:50%;pointer-events:none;animation:spinRing 4s linear infinite;opacity:.55}
+.orb-ring.r2{inset:-22px;animation-duration:6s;animation-direction:reverse;opacity:.35}
+.orb{position:absolute;width:7px;height:7px;border-radius:50%;background:var(--gold-m);box-shadow:0 0 6px var(--gold-m)}
+.orb.orb2{background:#60A5FA;box-shadow:0 0 6px #60A5FA}
+.orb.orb3{background:var(--green);box-shadow:0 0 6px var(--green)}
+@keyframes spinRing{to{transform:rotate(360deg)}}
+.btn-glow{position:absolute;inset:0;border-radius:10px;background:var(--gold-m);filter:blur(12px);opacity:.18;animation:pulseGlow 2s ease-in-out infinite;pointer-events:none}
+@keyframes pulseGlow{0%,100%{opacity:.12;transform:scale(.95)}50%{opacity:.28;transform:scale(1.05)}}
+.ripple{position:absolute;border-radius:50%;background:rgba(232,184,32,.4);transform:scale(0);animation:rippleOut .6s ease-out forwards;pointer-events:none}
+@keyframes rippleOut{to{transform:scale(4);opacity:0}}
+.btn-flip{background:var(--gold-m);color:#1A1200;border:none;border-radius:10px;padding:14px 0;width:100%;font-family:'DM Mono',monospace;font-size:.85rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;position:relative;overflow:hidden;transition:background .15s,transform .1s,opacity .15s;z-index:1}
 .btn-flip:hover{background:var(--gold-l)}.btn-flip:active{transform:scale(.97)}.btn-flip:disabled{opacity:.4;cursor:not-allowed;transform:none}
 .btn-sec{background:none;border:1px solid var(--border);border-radius:10px;padding:14px 16px;color:var(--muted);font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.1em;cursor:pointer;transition:all .15s;white-space:nowrap}
 .btn-sec:hover{border-color:rgba(255,255,255,.2);color:var(--text)}
-
-/* stats row */
+/* stats */
 .stats{display:grid;grid-template-columns:1fr 70px 1fr;gap:8px;width:100%;max-width:460px;margin-bottom:.7rem}
 .stat{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:12px 8px;text-align:center}
 .stat-num{font-family:'DM Mono',monospace;font-size:1.7rem;font-weight:500;line-height:1;margin-bottom:3px}
 .stat.hs .stat-num{color:var(--gold-l)}.stat.ts .stat-num{color:var(--sil-l)}
 .stat-label{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-family:'DM Mono',monospace}
 .wr{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);text-align:center;margin-bottom:.7rem;letter-spacing:.08em;min-height:1rem}
-.bar-wrap{width:100%;max-width:460px;height:4px;background:var(--bg3);border-radius:3px;overflow:hidden;margin-bottom:1.3rem}
+.bar-wrap{width:100%;max-width:460px;height:4px;background:var(--bg3);border-radius:3px;overflow:hidden;margin-bottom:1rem}
 .bar-fill{height:100%;background:linear-gradient(90deg,var(--gold-m),var(--gold-l));border-radius:3px;transition:width .5s ease;width:50%}
-
+/* achievements */
+.ach-wrap{width:100%;max-width:460px;background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:1rem}
+.ach-head{padding:9px 16px;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;cursor:pointer;user-select:none}
+.ach-head:hover{color:var(--text)}
+.ach-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px}
+.ach-card{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:10px;transition:all .3s}
+.ach-card.unlocked{border-color:rgba(232,184,32,.4);background:rgba(232,184,32,.06)}
+.ach-icon{font-size:22px;filter:grayscale(1);opacity:.3;transition:all .3s;flex-shrink:0}
+.ach-card.unlocked .ach-icon{filter:none;opacity:1}
+.ach-name{font-family:'DM Mono',monospace;font-size:.68rem;font-weight:500;color:var(--muted);letter-spacing:.04em;margin-bottom:2px}
+.ach-card.unlocked .ach-name{color:var(--gold-l)}
+.ach-desc{font-size:.6rem;color:var(--muted);letter-spacing:.03em}
+.ach-toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--bg2);border:1px solid rgba(232,184,32,.5);border-radius:14px;padding:12px 20px;display:flex;align-items:center;gap:12px;font-family:'DM Mono',monospace;z-index:3000;transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .3s;opacity:0;pointer-events:none;white-space:nowrap;box-shadow:0 4px 24px rgba(0,0,0,.4)}
+.ach-toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.ach-toast-icon{font-size:24px}
+.ach-toast-title{font-size:.75rem;font-weight:500;color:var(--gold-l)}
+.ach-toast-desc{font-size:.65rem;color:var(--muted)}
 /* history */
 .hist-wrap{width:100%;max-width:460px;background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:.8rem}
 .hist-head{padding:9px 16px;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
-.hist-list{max-height:155px;overflow-y:auto;padding:5px 0}
+.hist-list{max-height:145px;overflow-y:auto;padding:5px 0}
 .hist-list::-webkit-scrollbar{width:4px}
 .hist-list::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:2px}
 .hist-item{display:flex;align-items:center;gap:8px;padding:5px 14px;font-family:'DM Mono',monospace;font-size:.76rem}
 .hdot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .hdot.h{background:var(--gold-m)}.hdot.t{background:var(--sil-m)}
-.hnum{color:var(--muted);font-size:.66rem;min-width:24px}
-.hlbl{flex:1}.hlbl.h{color:var(--gold-l)}.hlbl.t{color:var(--sil-l)}
+.hnum{color:var(--muted);font-size:.66rem;min-width:24px}.hlbl{flex:1}
+.hlbl.h{color:var(--gold-l)}.hlbl.t{color:var(--sil-l)}
 .hchg{font-size:.68rem;min-width:60px;text-align:right}
 .hchg.w{color:var(--green)}.hchg.l{color:var(--red)}.hchg.nb{color:var(--muted)}
 .htime{color:var(--muted);font-size:.64rem;min-width:50px;text-align:right}
-
 .hint{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.1em;margin-top:.4rem;text-align:center}
-
-/* broke screen */
-.broke-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:2000;align-items:center;justify-content:center;flex-direction:column;gap:16px}
+.broke-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:2000;align-items:center;justify-content:center}
 .broke-overlay.show{display:flex}
 .broke-box{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:32px 40px;text-align:center;max-width:300px}
 .broke-box h2{font-family:'DM Mono',monospace;font-size:1.2rem;font-weight:500;margin-bottom:8px}
 .broke-box p{font-size:.85rem;color:var(--muted);margin-bottom:20px;line-height:1.6}
 .broke-btn{background:var(--gold-m);color:#1A1200;border:none;border-radius:10px;padding:12px 32px;font-family:'DM Mono',monospace;font-size:.8rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
 .broke-btn:hover{background:var(--gold-l)}
-
 #cc{position:fixed;inset:0;pointer-events:none;width:100%;height:100%;z-index:999}
 </style>
 </head>
 <body>
-
 <canvas id="cc"></canvas>
 <div class="broke-overlay" id="brokeOverlay">
   <div class="broke-box">
     <h2>💸 Broke!</h2>
-    <p>You ran out of coins. Don't worry — everyone gets a second chance.</p>
+    <p>You ran out of coins. Everyone gets a second chance.</p>
     <button class="broke-btn" onclick="rebuy()">Take a loan (+500 🪙)</button>
   </div>
 </div>
 <div class="delta" id="delta"></div>
+<div class="ach-toast" id="achToast">
+  <div class="ach-toast-icon" id="achToastIcon"></div>
+  <div>
+    <div class="ach-toast-title" id="achToastTitle"></div>
+    <div class="ach-toast-desc"  id="achToastDesc"></div>
+  </div>
+</div>
 
 <div class="topbar">
   <h1>Coin Flip</h1>
   <div class="top-btns">
-    <button class="icon-btn" id="sndBtn" title="Sound" onclick="toggleSound()">🔊</button>
-    <button class="icon-btn" id="thmBtn" title="Theme" onclick="toggleTheme()">🌙</button>
+    <button class="icon-btn" id="sndBtn" onclick="toggleSound()">🔊</button>
+    <button class="icon-btn" id="thmBtn" onclick="toggleTheme()">🌙</button>
   </div>
 </div>
 
-<!-- Wallet -->
 <div class="wallet">
   <div class="wallet-top">
     <div>
@@ -176,21 +171,16 @@ h1{font-family:'DM Mono',monospace;font-size:.95rem;font-weight:400;letter-spaci
     </div>
     <div class="wallet-badges" id="walBadges"></div>
   </div>
-  <!-- mini chart -->
   <canvas id="miniChart" height="32" style="width:100%;height:32px;opacity:.6"></canvas>
 </div>
 
-<!-- Wager -->
 <div class="wager-wrap">
-  <div class="wager-label">
-    <span>wager amount</span>
-    <span id="wagerVal">50 🪙</span>
-  </div>
+  <div class="wager-label"><span>wager amount</span><span id="wagerVal">50 🪙</span></div>
   <input type="range" class="wager-slider" id="wagerSlider" min="10" max="500" step="10" value="50" oninput="onSlider(this.value)">
   <div class="wager-presets">
     <button class="preset" onclick="setWager(10)">10</button>
     <button class="preset" onclick="setWager(25)">25</button>
-    <button class="preset" onclick="setWager(50)" >50</button>
+    <button class="preset" onclick="setWager(50)">50</button>
     <button class="preset" onclick="setWager(100)">100</button>
     <button class="preset" onclick="setWager(250)">250</button>
     <button class="preset" onclick="setWagerHalf()">½</button>
@@ -198,399 +188,448 @@ h1{font-family:'DM Mono',monospace;font-size:.95rem;font-weight:400;letter-spaci
   </div>
 </div>
 
-<!-- Skin selector -->
 <div class="skin-bar">
-  <button class="skin-btn on" onclick="setSkin('classic',this)">Classic</button>
-  <button class="skin-btn"   onclick="setSkin('copper',this)">Copper</button>
-  <button class="skin-btn"   onclick="setSkin('bitcoin',this)">Bitcoin</button>
-  <button class="skin-btn"   onclick="setSkin('ancient',this)">Ancient</button>
+  <button class="skin-btn on" onclick="setSkin('classic',this)">⚜️ Classic</button>
+  <button class="skin-btn"   onclick="setSkin('copper',this)">🪙 Copper</button>
+  <button class="skin-btn"   onclick="setSkin('bitcoin',this)">₿ Bitcoin</button>
+  <button class="skin-btn"   onclick="setSkin('ancient',this)">🏺 Ancient</button>
 </div>
 
-<!-- Coin -->
 <div class="scene" id="scene" onclick="flip()" role="button" aria-label="Flip coin" tabindex="0">
-  <div class="coin s-classic" id="coin">
-    <div class="face heads"><div class="face-symbol" id="hSym">👑</div><div class="face-label">Heads</div></div>
-    <div class="face tails"><div class="face-symbol" id="tSym">⚡</div><div class="face-label">Tails</div></div>
+  <div class="coin" id="coin">
+    <div class="face heads" id="faceH"></div>
+    <div class="face tails" id="faceT"></div>
   </div>
 </div>
 
-<div class="result idle" id="res">pick a side & flip</div>
+<div class="result idle" id="res">pick a side &amp; flip</div>
 <div class="streak" id="stk"></div>
 
-<!-- Bet buttons -->
 <div class="bet-row">
   <button class="bet-btn" id="bH" onclick="setBet('h')">
-    <span id="bHLabel">👑 Heads</span>
+    <span id="bHLabel">Heads</span>
     <span class="bet-payout" id="bHPayout">win +75 🪙</span>
   </button>
   <button class="bet-btn" id="bT" onclick="setBet('t')">
-    <span id="bTLabel">⚡ Tails</span>
+    <span id="bTLabel">Tails</span>
     <span class="bet-payout" id="bTPayout">win +75 🪙</span>
   </button>
 </div>
 
-<!-- Flip & Reset -->
 <div class="action-row">
-  <button class="btn-flip" id="flipBtn" onclick="flip()">Flip</button>
-  <button class="btn-sec"  onclick="resetAll()">Reset</button>
+  <div class="flip-wrap" id="flipWrap">
+    <div class="btn-glow" id="btnGlow"></div>
+    <div class="orb-ring" id="orbRing1">
+      <div class="orb" style="top:-3px;left:50%;margin-left:-3px"></div>
+      <div class="orb orb2" style="bottom:-3px;left:50%;margin-left:-3px"></div>
+      <div class="orb orb3" style="top:50%;right:-3px;margin-top:-3px"></div>
+    </div>
+    <div class="orb-ring r2" id="orbRing2">
+      <div class="orb orb2" style="top:-3px;left:25%"></div>
+      <div class="orb orb3" style="bottom:-3px;right:25%"></div>
+    </div>
+    <button class="btn-flip" id="flipBtn" onclick="flipClick(event)">Flip</button>
+  </div>
+  <button class="btn-sec" onclick="resetAll()">Reset</button>
 </div>
 
-<!-- Stats -->
 <div class="stats">
   <div class="stat hs"><div class="stat-num" id="hN">0</div><div class="stat-label">Heads</div></div>
-  <div class="stat">   <div class="stat-num" id="tot">0</div><div class="stat-label">Total</div></div>
+  <div class="stat"><div class="stat-num" id="tot">0</div><div class="stat-label">Total</div></div>
   <div class="stat ts"><div class="stat-num" id="tN">0</div><div class="stat-label">Tails</div></div>
 </div>
 <div class="wr" id="wr"></div>
 <div class="bar-wrap"><div class="bar-fill" id="bar"></div></div>
 
-<!-- History -->
+<div class="ach-wrap">
+  <div class="ach-head" onclick="toggleAch()">
+    <span>Achievements</span><span id="achProgress">0 / 12</span>
+  </div>
+  <div id="achGrid" class="ach-grid"></div>
+</div>
+
 <div class="hist-wrap">
   <div class="hist-head"><span>Flip history</span><span id="hCnt">0 flips</span></div>
   <div class="hist-list" id="hList"><div style="padding:16px;text-align:center;color:var(--muted);font-family:'DM Mono',monospace;font-size:.73rem;letter-spacing:.1em">no flips yet</div></div>
 </div>
-
-<div class="hint">space/enter = flip &nbsp;·&nbsp; H/T = bet side &nbsp;·&nbsp; R = reset</div>
+<div class="hint">space/enter = flip &nbsp;·&nbsp; H/T = bet &nbsp;·&nbsp; R = reset</div>
 
 <script>
-// ─── Constants ───────────────────────────────────────────
-const START_BAL   = 1000;
-const WIN_MULT    = 1.5;   // win: get back wager × 1.5 profit  → +75 on a 50 bet
-const LOSE_MULT   = 0.75;  // lose: only lose 75% of wager      → -37 on a 50 bet
-// Net edge: avg outcome per flip = 0.5×(+75) + 0.5×(-37.5) = +18.75 per 50 bet
-// i.e. player is expected to slowly gain — easier to win than lose
+// ── SVG coin faces ─────────────────────────────────────────────────────────
 
-const STREAK_BONUS = 0.25; // extra +25% of wager per streak level ≥3
-
-const skins={classic:{h:'👑',t:'⚡'},copper:{h:'🍀',t:'🌿'},bitcoin:{h:'₿',t:'🔶'},ancient:{h:'🦅',t:'🏛️'}};
-
-// ─── State ───────────────────────────────────────────────
-let bal=START_BAL, peak=START_BAL, wager=50;
-let betChoice=null, busy=false, soundOn=true, light=false, skin='classic';
-let h=0, t=0, streak=0, last=null, flipN=0;
-let bW=0, bL=0, totalWon=0, totalLost=0;
-const log=[], balHistory=[START_BAL];
-
-// ─── Elements ────────────────────────────────────────────
-const coinEl  = document.getElementById('coin');
-const resEl   = document.getElementById('res');
-const stkEl   = document.getElementById('stk');
-const flipBtn = document.getElementById('flipBtn');
-const barEl   = document.getElementById('bar');
-const bHBtn   = document.getElementById('bH');
-const bTBtn   = document.getElementById('bT');
-const hList   = document.getElementById('hList');
-const hCnt    = document.getElementById('hCnt');
-const wrEl    = document.getElementById('wr');
-const walBal  = document.getElementById('walBal');
-const walSub  = document.getElementById('walSub');
-const walBadges=document.getElementById('walBadges');
-const slider  = document.getElementById('wagerSlider');
-
-// ─── Audio ───────────────────────────────────────────────
-const actx=new(window.AudioContext||window.webkitAudioContext)();
-function beep(freq,type,vol,t,d){
-  const o=actx.createOscillator(),g=actx.createGain();
-  o.connect(g);g.connect(actx.destination);
-  o.type=type;o.frequency.value=freq;
-  g.gain.setValueAtTime(vol,actx.currentTime+t);
-  g.gain.exponentialRampToValueAtTime(0.001,actx.currentTime+t+d);
-  o.start(actx.currentTime+t);o.stop(actx.currentTime+t+d+.01);
+function rimDents(n,r,fill,op){
+  let s='';for(let i=0;i<n;i++){const a=i/n*Math.PI*2;const x=(100+Math.cos(a)*r).toFixed(1);const y=(100+Math.sin(a)*r).toFixed(1);s+=`<ellipse cx="${x}" cy="${y}" rx="4" ry="2.2" fill="${fill}" opacity="${op}" transform="rotate(${(i/n*360).toFixed(0)} ${x} ${y})"/>`}return s;
 }
+function rimTicks(n,r1,r2,stroke,sw,op){
+  let s='';for(let i=0;i<n;i++){const a=i/n*Math.PI*2;const x1=(100+Math.cos(a)*r1).toFixed(1);const y1=(100+Math.sin(a)*r1).toFixed(1);const x2=(100+Math.cos(a)*r2).toFixed(1);const y2=(100+Math.sin(a)*r2).toFixed(1);s+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${stroke}" stroke-width="${sw}" opacity="${op}"/>`}return s;
+}
+
+const FACES={
+  classic:{
+    h:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<defs><radialGradient id="cgh" cx="42%" cy="38%" r="62%"><stop offset="0%" stop-color="#FFFBE0"/><stop offset="22%" stop-color="#F9E07A"/><stop offset="58%" stop-color="#D4940A"/><stop offset="82%" stop-color="#9A6600"/><stop offset="100%" stop-color="#5C3A00"/></radialGradient></defs>
+<circle cx="100" cy="100" r="100" fill="url(#cgh)"/>
+<circle cx="100" cy="100" r="91" fill="none" stroke="#C48A00" stroke-width="2.5"/>
+<circle cx="100" cy="100" r="84" fill="none" stroke="rgba(255,240,120,.3)" stroke-width="1"/>
+<circle cx="100" cy="100" r="63" fill="none" stroke="#C48A00" stroke-width="1" stroke-dasharray="2 4"/>
+${rimDents(16,87,'#9A6600','0.7')}
+<path d="M88,63 C88,58 94,52 100,50 C106,52 112,58 112,63" fill="none" stroke="#8A5800" stroke-width="1.5" opacity=".55"/>
+<ellipse cx="100" cy="91" rx="19" ry="23" fill="#B07800" opacity=".45"/>
+<path d="M81,92 Q81,68 100,64 Q119,68 119,92 Q119,106 100,111 Q81,106 81,92Z" fill="#A06800" opacity=".5"/>
+<path d="M86,108 Q100,120 114,108 Q108,124 100,126 Q92,124 86,108Z" fill="#7A4800" opacity=".45"/>
+<circle cx="93" cy="86" r="2.5" fill="#5A3000" opacity=".55"/>
+<path d="M86,63 L90,53 L96,61 L100,48 L104,61 L110,53 L114,63Z" fill="#C49000" opacity=".65" stroke="#A07000" stroke-width=".8"/>
+<line x1="88" y1="96" x2="98" y2="96" stroke="#7A5000" stroke-width="1.2" opacity=".4"/>
+<text x="100" y="135" text-anchor="middle" fill="#7A5000" font-size="9" font-family="Georgia,serif" font-style="italic" letter-spacing="3" opacity=".85">HEADS</text>
+<text x="100" y="150" text-anchor="middle" fill="#9A7020" font-size="7" font-family="Georgia,serif" letter-spacing="2" opacity=".6">· MMXXV ·</text>
+</svg>`,
+    t:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<defs><radialGradient id="cgt" cx="38%" cy="32%" r="65%"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="25%" stop-color="#D8DCE8"/><stop offset="58%" stop-color="#8A90A8"/><stop offset="82%" stop-color="#505870"/><stop offset="100%" stop-color="#282E40"/></radialGradient></defs>
+<circle cx="100" cy="100" r="100" fill="url(#cgt)"/>
+<circle cx="100" cy="100" r="91" fill="none" stroke="#6A7090" stroke-width="2.5"/>
+<circle cx="100" cy="100" r="84" fill="none" stroke="rgba(220,228,255,.25)" stroke-width="1"/>
+<circle cx="100" cy="100" r="63" fill="none" stroke="#5A6080" stroke-width="1" stroke-dasharray="2 4"/>
+${rimDents(16,87,'#505870','0.65')}
+<path d="M100,72 C78,65 58,70 50,82 C60,76 76,78 84,88 C77,80 70,88 68,98 C80,86 88,86 100,94 C112,86 120,86 132,98 C130,88 123,80 116,88 C124,78 140,76 150,82 C142,70 122,65 100,72Z" fill="#505870" opacity=".5"/>
+<circle cx="100" cy="100" r="14" fill="none" stroke="#6070A0" stroke-width="1.5" opacity=".5"/>
+<path d="M100,86 L103,97 L114,100 L103,103 L100,114 L97,103 L86,100 L97,97Z" fill="#6070A0" opacity=".4"/>
+<text x="100" y="130" text-anchor="middle" fill="#505870" font-size="9" font-family="Georgia,serif" font-style="italic" letter-spacing="3" opacity=".85">TAILS</text>
+<text x="100" y="145" text-anchor="middle" fill="#606888" font-size="7" font-family="Georgia,serif" letter-spacing="1.5" opacity=".6">· E PLURIBUS ·</text>
+</svg>`
+  },
+
+  copper:{
+    h:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<defs><radialGradient id="cph" cx="40%" cy="36%" r="66%"><stop offset="0%" stop-color="#FFD4A0"/><stop offset="18%" stop-color="#D4783A"/><stop offset="45%" stop-color="#9A3E10"/><stop offset="72%" stop-color="#6A2008"/><stop offset="100%" stop-color="#2E0800"/></radialGradient></defs>
+<circle cx="100" cy="100" r="100" fill="url(#cph)"/>
+<ellipse cx="55" cy="52" rx="22" ry="16" fill="#2A6838" opacity=".4" transform="rotate(-20 55 52)"/>
+<ellipse cx="162" cy="70" rx="14" ry="10" fill="#228030" opacity=".32" transform="rotate(15 162 70)"/>
+<ellipse cx="42" cy="148" rx="18" ry="12" fill="#2A6838" opacity=".36" transform="rotate(10 42 148)"/>
+<ellipse cx="158" cy="155" rx="12" ry="8"  fill="#228030" opacity=".28" transform="rotate(-8 158 155)"/>
+<ellipse cx="115" cy="34" rx="10" ry="7"   fill="#2A6838" opacity=".24"/>
+<ellipse cx="165" cy="118" rx="9"  ry="6"   fill="#228030" opacity=".2" transform="rotate(-12 165 118)"/>
+<circle cx="100" cy="100" r="97" fill="none" stroke="#1E0600" stroke-width="5" opacity=".5"/>
+<circle cx="100" cy="100" r="88" fill="none" stroke="#7A2E08" stroke-width="2.5" opacity=".7"/>
+<circle cx="100" cy="100" r="78" fill="none" stroke="#5A1E04" stroke-width="1.2" opacity=".5"/>
+${rimDents(18,83,'#400E00','0.65')}
+<line x1="70" y1="44" x2="88" y2="72"   stroke="#FF9050" stroke-width=".7" opacity=".15"/>
+<line x1="130" y1="52" x2="118" y2="80" stroke="#FF9050" stroke-width=".7" opacity=".12"/>
+<line x1="48" y1="120" x2="72" y2="138" stroke="#FF9050" stroke-width=".7" opacity=".14"/>
+<line x1="155" y1="95" x2="138" y2="118" stroke="#FF9050" stroke-width=".7" opacity=".12"/>
+<ellipse cx="100" cy="93" rx="20" ry="25" fill="#7A2A08" opacity=".48"/>
+<path d="M80,95 Q80,70 100,66 Q120,70 120,95 Q120,110 100,116 Q80,110 80,95Z" fill="#6A2208" opacity=".58"/>
+<path d="M86,108 Q100,120 114,108 Q108,124 100,126 Q92,124 86,108Z" fill="#4A1404" opacity=".5"/>
+<circle cx="94" cy="88" r="2" fill="#1E0600" opacity=".7"/>
+<text x="100" y="144" text-anchor="middle" fill="#9A3A10" font-size="8.5" font-family="Georgia,serif" font-style="italic" letter-spacing="2" opacity=".88">COPPER</text>
+<text x="100" y="158" text-anchor="middle" fill="#7A2808" font-size="7" font-family="Georgia,serif" letter-spacing="1.5" opacity=".65">IN GOD WE TRUST</text>
+</svg>`,
+    t:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<defs><radialGradient id="cpt" cx="55%" cy="58%" r="60%"><stop offset="0%" stop-color="#C46028"/><stop offset="25%" stop-color="#8A3010"/><stop offset="58%" stop-color="#5A1808"/><stop offset="100%" stop-color="#1E0600"/></radialGradient></defs>
+<circle cx="100" cy="100" r="100" fill="url(#cpt)"/>
+<ellipse cx="52" cy="48" rx="24" ry="17" fill="#2A6838" opacity=".38" transform="rotate(-18 52 48)"/>
+<ellipse cx="165" cy="62" rx="16" ry="11" fill="#228030" opacity=".32" transform="rotate(14 165 62)"/>
+<ellipse cx="38" cy="150" rx="20" ry="13" fill="#2A6838" opacity=".35" transform="rotate(9 38 150)"/>
+<ellipse cx="162" cy="148" rx="14" ry="9"  fill="#228030" opacity=".3" transform="rotate(-7 162 148)"/>
+<circle cx="100" cy="100" r="97" fill="none" stroke="#180400" stroke-width="5" opacity=".5"/>
+<circle cx="100" cy="100" r="88" fill="none" stroke="#6A2008" stroke-width="2.5" opacity=".68"/>
+<circle cx="100" cy="100" r="78" fill="none" stroke="#4A1404" stroke-width="1.2" opacity=".48"/>
+${rimDents(18,83,'#2A0800','0.58')}
+<line x1="62" y1="48" x2="80" y2="78"   stroke="#FF8030" stroke-width=".8" opacity=".13"/>
+<line x1="140" y1="44" x2="126" y2="74" stroke="#FF8030" stroke-width=".8" opacity=".11"/>
+<line x1="44" y1="118" x2="68" y2="136" stroke="#FF8030" stroke-width=".8" opacity=".13"/>
+<rect x="62" y="105" width="76" height="4"  rx="1" fill="#5A1A08" opacity=".72"/>
+<rect x="58" y="109" width="84" height="3"  rx="1" fill="#4A1404" opacity=".65"/>
+<rect x="55" y="112" width="90" height="2"  rx="1" fill="#3A0E02" opacity=".6"/>
+<rect x="68" y="79" width="5" height="26" rx="1" fill="#5A1A08" opacity=".68"/>
+<rect x="80" y="77" width="5" height="28" rx="1" fill="#5A1A08" opacity=".68"/>
+<rect x="92" y="76" width="5" height="29" rx="1" fill="#5A1A08" opacity=".68"/>
+<rect x="104" y="76" width="5" height="29" rx="1" fill="#5A1A08" opacity=".68"/>
+<rect x="116" y="77" width="5" height="28" rx="1" fill="#5A1A08" opacity=".68"/>
+<rect x="128" y="79" width="5" height="26" rx="1" fill="#5A1A08" opacity=".68"/>
+<path d="M60,79 L100,59 L140,79Z" fill="#4A1404" opacity=".62"/>
+<rect x="60" y="114" width="80" height="3" rx="0" fill="#3A0E02" opacity=".55"/>
+<rect x="57" y="117" width="86" height="3" rx="0" fill="#2A0800" opacity=".5"/>
+<text x="100" y="138" text-anchor="middle" fill="#9A3010" font-size="8"   font-family="Georgia,serif" opacity=".88">ONE CENT</text>
+<text x="100" y="152" text-anchor="middle" fill="#7A2808" font-size="7"   font-family="Georgia,serif" letter-spacing="1.5" opacity=".7">UNITED STATES</text>
+<text x="100" y="164" text-anchor="middle" fill="#6A2208" font-size="6.5" font-family="Georgia,serif" opacity=".55">OF AMERICA</text>
+</svg>`
+  },
+
+  bitcoin:{
+    h:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<defs><radialGradient id="bth" cx="38%" cy="33%" r="68%"><stop offset="0%" stop-color="#FFF4C0"/><stop offset="18%" stop-color="#FFD060"/><stop offset="46%" stop-color="#F79020"/><stop offset="72%" stop-color="#C05800"/><stop offset="100%" stop-color="#6A2800"/></radialGradient></defs>
+<circle cx="100" cy="100" r="100" fill="url(#bth)"/>
+<circle cx="100" cy="100" r="91" fill="none" stroke="#D07010" stroke-width="3"/>
+<circle cx="100" cy="100" r="83" fill="none" stroke="rgba(255,210,80,.22)" stroke-width="1.2"/>
+<polyline points="100,20 100,42 142,42 142,62" fill="none" stroke="rgba(255,200,60,.22)" stroke-width="1.5"/>
+<polyline points="100,180 100,158 58,158 58,138" fill="none" stroke="rgba(255,200,60,.22)" stroke-width="1.5"/>
+<polyline points="18,100 40,100 40,138 58,138" fill="none" stroke="rgba(255,200,60,.18)" stroke-width="1.5"/>
+<polyline points="182,100 160,100 160,62 142,62" fill="none" stroke="rgba(255,200,60,.18)" stroke-width="1.5"/>
+<circle cx="142" cy="62" r="3.5" fill="rgba(255,220,80,.45)"/>
+<circle cx="58"  cy="138" r="3.5" fill="rgba(255,220,80,.45)"/>
+<circle cx="40"  cy="138" r="3.5" fill="rgba(255,220,80,.38)"/>
+<circle cx="160" cy="62"  r="3.5" fill="rgba(255,220,80,.38)"/>
+${rimDents(20,86,'#B05800','0.72')}
+<path d="M87,62 L87,138 M113,62 L113,138" fill="none" stroke="#6A3000" stroke-width="1.5" opacity=".2"/>
+<rect x="80" y="62" width="40" height="76" rx="8" fill="none" stroke="#8A4800" stroke-width="1" opacity=".3"/>
+<text x="100" y="116" text-anchor="middle" fill="#6A3000" font-size="52" font-family="Georgia,serif" font-weight="bold" opacity=".6">₿</text>
+<text x="100" y="148" text-anchor="middle" fill="#7A3800" font-size="8.5" font-family="Georgia,serif" letter-spacing="2" opacity=".8">BITCOIN</text>
+<text x="100" y="161" text-anchor="middle" fill="#8A4800" font-size="7"   font-family="Georgia,serif" letter-spacing="1.5" opacity=".6">DIGITAL GOLD</text>
+</svg>`,
+    t:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<defs><radialGradient id="btt" cx="55%" cy="55%" r="62%"><stop offset="0%" stop-color="#FFE8A0"/><stop offset="28%" stop-color="#F0C040"/><stop offset="62%" stop-color="#C08010"/><stop offset="100%" stop-color="#704000"/></radialGradient></defs>
+<circle cx="100" cy="100" r="100" fill="url(#btt)"/>
+<circle cx="100" cy="100" r="91" fill="none" stroke="#A07010" stroke-width="2.5"/>
+<circle cx="100" cy="100" r="82" fill="none" stroke="rgba(200,150,40,.2)" stroke-width="1"/>
+<polyline points="100,24 100,46 56,46 56,66"  fill="none" stroke="rgba(180,130,30,.2)" stroke-width="1.5"/>
+<polyline points="100,176 100,154 144,154 144,134" fill="none" stroke="rgba(180,130,30,.2)" stroke-width="1.5"/>
+<circle cx="56"  cy="66"  r="3" fill="rgba(200,150,40,.4)"/>
+<circle cx="144" cy="134" r="3" fill="rgba(200,150,40,.4)"/>
+${rimDents(20,86,'#906010','0.65')}
+<path d="M68,58 L68,142 M132,58 L132,142" fill="none" stroke="#704000" stroke-width="1" opacity=".18"/>
+<circle cx="100" cy="95" r="32" fill="none" stroke="#906010" stroke-width="1.5" opacity=".35"/>
+<circle cx="100" cy="95" r="20" fill="none" stroke="#906010" stroke-width="1" opacity=".25"/>
+<text x="100" y="108" text-anchor="middle" fill="#5A2800" font-size="42" font-family="Georgia,serif" font-weight="bold" opacity=".5">₿</text>
+<text x="100" y="148" text-anchor="middle" fill="#6A3800" font-size="8"   font-family="Georgia,serif" letter-spacing="2" opacity=".78">21,000,000</text>
+<text x="100" y="160" text-anchor="middle" fill="#7A4800" font-size="7"   font-family="Georgia,serif" letter-spacing="1.5" opacity=".6">MAX SUPPLY</text>
+</svg>`
+  },
+
+  ancient:{
+    h:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<defs><radialGradient id="anh" cx="45%" cy="40%" r="62%"><stop offset="0%" stop-color="#C8B870"/><stop offset="20%" stop-color="#A09040"/><stop offset="50%" stop-color="#706020"/><stop offset="78%" stop-color="#4A3E10"/><stop offset="100%" stop-color="#1E1808"/></radialGradient></defs>
+<circle cx="100" cy="100" r="100" fill="url(#anh)"/>
+<ellipse cx="48" cy="58" rx="28" ry="20" fill="#1A6028" opacity=".58" transform="rotate(-15 48 58)"/>
+<ellipse cx="168" cy="55" rx="20" ry="14" fill="#228038" opacity=".48" transform="rotate(20 168 55)"/>
+<ellipse cx="35" cy="138" rx="22" ry="15" fill="#1A6028" opacity=".52" transform="rotate(8 35 138)"/>
+<ellipse cx="172" cy="150" rx="16" ry="11" fill="#228038" opacity=".44" transform="rotate(-10 172 150)"/>
+<ellipse cx="110" cy="25"  rx="12" ry="8"  fill="#1A6028" opacity=".36"/>
+<ellipse cx="22"  cy="98"  rx="10" ry="14" fill="#228038" opacity=".4" transform="rotate(5 22 98)"/>
+<ellipse cx="180" cy="105" rx="8"  ry="12" fill="#1A6028" opacity=".34"/>
+<circle cx="100" cy="100" r="97" fill="none" stroke="#100E04" stroke-width="5" opacity=".6"/>
+<circle cx="100" cy="100" r="87" fill="none" stroke="#4A3A14" stroke-width="2" opacity=".82"/>
+${rimTicks(14,78,86,'#3A2C0A','2','0.7')}
+<circle cx="100" cy="100" r="68" fill="none" stroke="#3A2C10" stroke-width="1" opacity=".62"/>
+<path d="M112,44 C115,37 121,34 118,42 C116,47 112,50 112,52" fill="#3A2C0C" opacity=".7"/>
+<path d="M112,52 L112,44" fill="none" stroke="#3A2C0C" stroke-width="2.5" opacity=".6"/>
+<path d="M118,52 C122,56 124,64 121,70 C120,74 116,76 112,73 C116,68 118,61 115,57Z" fill="#3A2C0C" opacity=".58"/>
+<path d="M90,56 C95,49 105,46 112,52 C117,57 119,66 116,75 C114,83 108,90 100,92 C93,92 89,87 87,81 C83,72 84,62 90,56Z" fill="#6A540C" opacity=".68"/>
+<path d="M90,56 C95,47 106,43 114,50 C119,55 121,62 118,68" fill="none" stroke="#3A2C0A" stroke-width="7" stroke-linecap="round" opacity=".5"/>
+<path d="M86,74 Q84,81 87,88" fill="none" stroke="#3A2C0A" stroke-width="2" opacity=".4"/>
+<circle cx="96" cy="72" r="2.2" fill="#1E1608" opacity=".75"/>
+<path d="M94,80 L96,84" fill="none" stroke="#2E2008" stroke-width="1.5" opacity=".5"/>
+<rect x="94" y="90" width="10" height="8" rx="2" fill="#5A4808" opacity=".55"/>
+<line x1="72" y1="98" x2="128" y2="98" stroke="#3A2C0A" stroke-width="1.8" opacity=".55"/>
+<text x="100" y="118" text-anchor="middle" fill="#4A3A10" font-size="12" font-family="Georgia,serif" opacity=".85">ΑΘΗΝΑ</text>
+<text x="100" y="136" text-anchor="middle" fill="#5A4818" font-size="7.5" font-family="Georgia,serif" letter-spacing="2" opacity=".68">· IV BC ·</text>
+<text x="100" y="152" text-anchor="middle" fill="#4A3A10" font-size="7" font-family="Georgia,serif" opacity=".5">TETRADRACHM</text>
+</svg>`,
+    t:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<defs><radialGradient id="ant" cx="55%" cy="55%" r="60%"><stop offset="0%" stop-color="#B0A060"/><stop offset="30%" stop-color="#807030"/><stop offset="65%" stop-color="#4A3A0E"/><stop offset="100%" stop-color="#1A1404"/></radialGradient></defs>
+<circle cx="100" cy="100" r="100" fill="url(#ant)"/>
+<ellipse cx="40" cy="60" rx="24" ry="17" fill="#1A6028" opacity=".52" transform="rotate(-10 40 60)"/>
+<ellipse cx="165" cy="48" rx="18" ry="12" fill="#228038" opacity=".44"/>
+<ellipse cx="30" cy="155" rx="20" ry="13" fill="#1A6028" opacity=".48" transform="rotate(12 30 155)"/>
+<ellipse cx="170" cy="162" rx="14" ry="9"  fill="#228038" opacity=".4"/>
+<ellipse cx="108" cy="178" rx="11" ry="7"  fill="#1A6028" opacity=".32"/>
+<circle cx="100" cy="100" r="97" fill="none" stroke="#0E0C04" stroke-width="5" opacity=".58"/>
+<circle cx="100" cy="100" r="87" fill="none" stroke="#4A3A14" stroke-width="2" opacity=".8"/>
+${rimTicks(14,78,86,'#3A2C0A','2','0.65')}
+<circle cx="100" cy="100" r="68" fill="none" stroke="#3A2C10" stroke-width="1" opacity=".6"/>
+<ellipse cx="98" cy="95" rx="23" ry="29" fill="#2E2408" opacity=".78"/>
+<path d="M75,88 C69,84 67,76 71,69 C77,76 79,85 81,90Z" fill="#1E1A08" opacity=".68"/>
+<path d="M121,88 C127,84 129,76 125,69 C119,76 117,85 115,90Z" fill="#1E1A08" opacity=".68"/>
+<ellipse cx="98" cy="79" rx="15" ry="14" fill="#3A2E0A" opacity=".82"/>
+<circle cx="91" cy="77" r="6.5" fill="#0E0C04" opacity=".92"/>
+<circle cx="105" cy="77" r="6.5" fill="#0E0C04" opacity=".92"/>
+<circle cx="90"  cy="76" r="2.2" fill="#C8A040" opacity=".82"/>
+<circle cx="104" cy="76" r="2.2" fill="#C8A040" opacity=".82"/>
+<circle cx="90.5" cy="76.5" r=".9" fill="#0A0804"/>
+<circle cx="104.5" cy="76.5" r=".9" fill="#0A0804"/>
+<path d="M95,83 L98,89 L101,83Z" fill="#8A6010" opacity=".92"/>
+<path d="M86,124 L82,133 M86,124 L87,133 M86,124 L90,131" fill="none" stroke="#2E2408" stroke-width="1.8" opacity=".72"/>
+<path d="M110,124 L106,133 M110,124 L111,133 M110,124 L114,131" fill="none" stroke="#2E2408" stroke-width="1.8" opacity=".72"/>
+<path d="M122,87 C128,81 134,77 139,71" fill="none" stroke="#1A5018" stroke-width="1.8" opacity=".72"/>
+<ellipse cx="126" cy="83" rx="5.5" ry="3.5" fill="#1A5018" opacity=".65" transform="rotate(-30 126 83)"/>
+<ellipse cx="131" cy="78" rx="5.5" ry="3.5" fill="#1A5018" opacity=".58" transform="rotate(-42 131 78)"/>
+<ellipse cx="136" cy="73" rx="5" ry="3" fill="#1A5018" opacity=".52" transform="-52 136 73)"/>
+<path d="M66,68 C60,61 60,53 66,49 C62,55 64,63 71,67Z" fill="#244818" opacity=".58"/>
+<text x="100" y="148" text-anchor="middle" fill="#4A3A10" font-size="11" font-family="Georgia,serif" opacity=".82">ΑΘΕΝΑΙΟΝ</text>
+<text x="100" y="164" text-anchor="middle" fill="#5A4818" font-size="7" font-family="Georgia,serif" opacity=".58">· GLAUKOS ·</text>
+</svg>`
+  }
+};
+
+// ── Constants
+const START_BAL=1000, WIN_MULT=1.5, LOSE_MULT=0.75, STREAK_BONUS=0.25;
+
+// ── Achievements
+const ACHIEVEMENTS=[
+  {id:'first',    icon:'🎯',name:'First Flip',      desc:'Flip for the first time',          check:()=>flipN>=1},
+  {id:'streak3',  icon:'🔥',name:'Hat Trick',        desc:'3 in a row',                       check:()=>streak>=3},
+  {id:'streak5',  icon:'🌊',name:'On Fire',           desc:'5 in a row',                       check:()=>streak>=5},
+  {id:'streak10', icon:'⚡',name:'Unstoppable',       desc:'10 in a row',                      check:()=>streak>=10},
+  {id:'flip10',   icon:'🪙',name:'Getting Warmed Up', desc:'10 total flips',                   check:()=>flipN>=10},
+  {id:'flip50',   icon:'🎲',name:'Flip Addict',       desc:'50 total flips',                   check:()=>flipN>=50},
+  {id:'flip100',  icon:'💯',name:'Centurion',         desc:'100 total flips',                  check:()=>flipN>=100},
+  {id:'rich',     icon:'🤑',name:'Getting Rich',      desc:'Reach 2,000 🪙',                   check:()=>bal>=2000},
+  {id:'filthy',   icon:'💰',name:'Filthy Rich',       desc:'Reach 5,000 🪙',                   check:()=>bal>=5000},
+  {id:'win5',     icon:'🏆',name:'High Roller',       desc:'5 bets won in a row',              check:()=>betWinStreak>=5},
+  {id:'allIn',    icon:'🎰',name:'All In',            desc:'Bet your entire balance',          check:()=>wentAllIn},
+  {id:'comeback', icon:'💪',name:'Comeback Kid',      desc:'Recover from under 100 to 500+',  check:()=>madeComeback},
+];
+let unlockedAch=new Set(),toastQueue=[],toastBusy=false;
+
+function checkAchievements(){ACHIEVEMENTS.forEach(a=>{if(!unlockedAch.has(a.id)&&a.check()){unlockedAch.add(a.id);showAchToast(a)}});renderAch()}
+function showAchToast(a){toastQueue.push(a);if(!toastBusy)nextToast()}
+function nextToast(){if(!toastQueue.length){toastBusy=false;return}toastBusy=true;const a=toastQueue.shift();const t=document.getElementById('achToast');document.getElementById('achToastIcon').textContent=a.icon;document.getElementById('achToastTitle').textContent='Achievement: '+a.name;document.getElementById('achToastDesc').textContent=a.desc;t.classList.add('show');playAch();setTimeout(()=>{t.classList.remove('show');setTimeout(nextToast,400)},2800)}
+function renderAch(){const g=document.getElementById('achGrid');g.innerHTML=ACHIEVEMENTS.map(a=>{const on=unlockedAch.has(a.id);return`<div class="ach-card${on?' unlocked':''}"><div class="ach-icon">${a.icon}</div><div><div class="ach-name">${a.name}</div><div class="ach-desc">${a.desc}</div></div></div>`}).join('');document.getElementById('achProgress').textContent=unlockedAch.size+' / '+ACHIEVEMENTS.length}
+function toggleAch(){const g=document.getElementById('achGrid');g.style.display=g.style.display==='none'?'grid':'none'}
+
+// ── State
+let bal=START_BAL,peak=START_BAL,wager=50;
+let betChoice=null,busy=false,soundOn=true,light=false,skin='classic';
+let h=0,t=0,streak=0,last=null,flipN=0;
+let bW=0,bL=0,totalWon=0,totalLost=0;
+let betWinStreak=0,wentAllIn=false,madeComeback=false,wasLow=false;
+const log=[],balHistory=[START_BAL];
+
+// ── Elements
+const coinEl=document.getElementById('coin'),resEl=document.getElementById('res'),stkEl=document.getElementById('stk');
+const flipBtn=document.getElementById('flipBtn'),barEl=document.getElementById('bar');
+const bHBtn=document.getElementById('bH'),bTBtn=document.getElementById('bT');
+const hList=document.getElementById('hList'),hCnt=document.getElementById('hCnt'),wrEl=document.getElementById('wr');
+const walBal=document.getElementById('walBal'),walSub=document.getElementById('walSub'),walBadges=document.getElementById('walBadges');
+const slider=document.getElementById('wagerSlider');
+
+// ── Apply skin
+const SKIN_LABELS={classic:['👑 Heads','⚡ Tails'],copper:['🪙 Heads','🏛️ Tails'],bitcoin:['₿ Heads','🔶 Tails'],ancient:['🏺 Heads','🦉 Tails']};
+function applySkin(name){
+  document.getElementById('faceH').innerHTML=FACES[name].h;
+  document.getElementById('faceT').innerHTML=FACES[name].t;
+  document.getElementById('bHLabel').textContent=SKIN_LABELS[name][0];
+  document.getElementById('bTLabel').textContent=SKIN_LABELS[name][1];
+  coinEl.style.transform='';
+}
+applySkin('classic');
+
+// ── Audio
+const actx=new(window.AudioContext||window.webkitAudioContext)();
+function beep(f,type,vol,t,d){const o=actx.createOscillator(),g=actx.createGain();o.connect(g);g.connect(actx.destination);o.type=type;o.frequency.value=f;g.gain.setValueAtTime(vol,actx.currentTime+t);g.gain.exponentialRampToValueAtTime(0.001,actx.currentTime+t+d);o.start(actx.currentTime+t);o.stop(actx.currentTime+t+d+.01)}
 function playFlip(){if(!soundOn)return;for(let i=0;i<7;i++)beep(900+i*60,'sine',.12,i*.09,.07)}
 function playLand(isH){if(!soundOn)return;beep(isH?660:440,'triangle',.2,0,.08);beep(isH?880:330,'triangle',.15,.1,.12)}
 function playWin(){if(!soundOn)return;[523,659,784,1047].forEach((f,i)=>beep(f,'sine',.15,i*.1,.18))}
 function playBigWin(){if(!soundOn)return;[523,659,784,1047,1319].forEach((f,i)=>beep(f,'sine',.18,i*.08,.2))}
 function playLose(){if(!soundOn)return;[392,349,294].forEach((f,i)=>beep(f,'sawtooth',.1,i*.12,.18))}
+function playAch(){if(!soundOn)return;[659,784,880,1047].forEach((f,i)=>beep(f,'sine',.12,i*.07,.2))}
 
-// ─── Confetti ────────────────────────────────────────────
+// ── Confetti
 const cc=document.getElementById('cc'),cx=cc.getContext('2d');let parts=[];
-function confetti(big){
-  cc.width=innerWidth;cc.height=innerHeight;
-  const n=big?180:100;
-  for(let i=0;i<n;i++)parts.push({
-    x:Math.random()*cc.width,y:-20-Math.random()*80,
-    w:7+Math.random()*9,h:4+Math.random()*5,
-    c:['#E8B820','#F9E07A','#9DA3B4','#FF8C42','#4ADE80','#60A5FA','#F87171'][Math.floor(Math.random()*7)],
-    vx:(Math.random()-.5)*5,vy:3+Math.random()*5,r:Math.random()*360,vr:(Math.random()-.5)*9,life:1
-  });
-  (function draw(){
-    cx.clearRect(0,0,cc.width,cc.height);
-    parts=parts.filter(p=>p.life>.01);
-    parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;p.life-=.013;
-      cx.save();cx.globalAlpha=p.life;cx.translate(p.x,p.y);cx.rotate(p.r*Math.PI/180);cx.fillStyle=p.c;cx.fillRect(-p.w/2,-p.h/2,p.w,p.h);cx.restore()});
-    if(parts.length)requestAnimationFrame(draw);
-  })();
+function confetti(big){cc.width=innerWidth;cc.height=innerHeight;const n=big?180:100;for(let i=0;i<n;i++)parts.push({x:Math.random()*cc.width,y:-20-Math.random()*80,w:7+Math.random()*9,h:4+Math.random()*5,c:['#E8B820','#F9E07A','#9DA3B4','#FF8C42','#4ADE80','#60A5FA','#F87171'][Math.floor(Math.random()*7)],vx:(Math.random()-.5)*5,vy:3+Math.random()*5,r:Math.random()*360,vr:(Math.random()-.5)*9,life:1});(function draw(){cx.clearRect(0,0,cc.width,cc.height);parts=parts.filter(p=>p.life>.01);parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;p.life-=.013;cx.save();cx.globalAlpha=p.life;cx.translate(p.x,p.y);cx.rotate(p.r*Math.PI/180);cx.fillStyle=p.c;cx.fillRect(-p.w/2,-p.h/2,p.w,p.h);cx.restore()});if(parts.length)requestAnimationFrame(draw)})()}
+
+// ── Mini chart
+function drawChart(){const cv=document.getElementById('miniChart'),ctx=cv.getContext('2d');cv.width=cv.offsetWidth*2;cv.height=64;ctx.clearRect(0,0,cv.width,cv.height);if(balHistory.length<2)return;const mn=Math.min(...balHistory),mx=Math.max(...balHistory),range=Math.max(mx-mn,1),W=cv.width,H=cv.height,pad=4;const pts=balHistory.map((v,i)=>({x:pad+i/(balHistory.length-1)*(W-pad*2),y:pad+(1-(v-mn)/range)*(H-pad*2)}));const grad=ctx.createLinearGradient(0,0,0,H);const rising=balHistory[balHistory.length-1]>=balHistory[0];grad.addColorStop(0,rising?'rgba(74,222,128,.35)':'rgba(248,113,113,.35)');grad.addColorStop(1,'rgba(0,0,0,0)');ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);pts.slice(1).forEach(p=>ctx.lineTo(p.x,p.y));ctx.lineTo(pts[pts.length-1].x,H);ctx.lineTo(pts[0].x,H);ctx.closePath();ctx.fillStyle=grad;ctx.fill();ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);pts.slice(1).forEach(p=>ctx.lineTo(p.x,p.y));ctx.strokeStyle=rising?'#4ADE80':'#F87171';ctx.lineWidth=2;ctx.stroke()}
+
+// ── Delta popup
+function showDelta(amount,el){const d=document.getElementById('delta');d.textContent=(amount>0?'+':'')+amount+'🪙';d.style.color=amount>0?'#4ADE80':'#F87171';const r=el.getBoundingClientRect();d.style.left=(r.left+r.width/2-30)+'px';d.style.top=(r.top-10)+'px';d.classList.remove('show');void d.offsetWidth;d.classList.add('show')}
+
+// ── Button glow by streak
+function updateBtnGlow(){
+  const r1=document.getElementById('orbRing1'),r2=document.getElementById('orbRing2');
+  const g=document.getElementById('btnGlow');
+  if(streak>=5){r1.style.opacity='0.9';r2.style.opacity='0.7';g.style.background='#F87171';g.style.animationDuration='.8s';}
+  else if(streak>=3){r1.style.opacity='0.75';r2.style.opacity='0.5';g.style.background='#FF8C42';g.style.animationDuration='1.2s';}
+  else{r1.style.opacity='0.55';r2.style.opacity='0.35';g.style.background='var(--gold-m)';g.style.animationDuration='2s';}
 }
 
-// ─── Mini chart ──────────────────────────────────────────
-function drawChart(){
-  const canvas=document.getElementById('miniChart');
-  const ctx=canvas.getContext('2d');
-  canvas.width=canvas.offsetWidth*2;canvas.height=64;
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  if(balHistory.length<2)return;
-  const min=Math.min(...balHistory),max=Math.max(...balHistory);
-  const range=Math.max(max-min,1);
-  const W=canvas.width,H=canvas.height,pad=4;
-  const pts=balHistory.map((v,i)=>({
-    x:pad+i/(balHistory.length-1)*(W-pad*2),
-    y:pad+(1-(v-min)/range)*(H-pad*2)
-  }));
-  const grad=ctx.createLinearGradient(0,0,0,H);
-  const rising=balHistory[balHistory.length-1]>=balHistory[0];
-  grad.addColorStop(0,rising?'rgba(74,222,128,.35)':'rgba(248,113,113,.35)');
-  grad.addColorStop(1,'rgba(0,0,0,0)');
-  ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);
-  pts.slice(1).forEach(p=>ctx.lineTo(p.x,p.y));
-  ctx.lineTo(pts[pts.length-1].x,H);ctx.lineTo(pts[0].x,H);ctx.closePath();
-  ctx.fillStyle=grad;ctx.fill();
-  ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);
-  pts.slice(1).forEach(p=>ctx.lineTo(p.x,p.y));
-  ctx.strokeStyle=rising?'#4ADE80':'#F87171';ctx.lineWidth=2;ctx.stroke();
-}
+// ── Ripple
+function flipClick(e){const r=flipBtn.getBoundingClientRect(),rip=document.createElement('div');rip.className='ripple';const sz=Math.max(flipBtn.offsetWidth,flipBtn.offsetHeight);rip.style.cssText=`width:${sz}px;height:${sz}px;left:${e.clientX-r.left-sz/2}px;top:${e.clientY-r.top-sz/2}px`;flipBtn.appendChild(rip);setTimeout(()=>rip.remove(),700);flip()}
 
-// ─── Delta popup ─────────────────────────────────────────
-function showDelta(amount, el){
-  const d=document.getElementById('delta');
-  d.textContent=(amount>0?'+':'')+amount+'🪙';
-  d.style.color=amount>0?'#4ADE80':'#F87171';
-  const r=el.getBoundingClientRect();
-  d.style.left=(r.left+r.width/2-30)+'px';
-  d.style.top=(r.top-10)+'px';
-  d.classList.remove('show');
-  void d.offsetWidth;
-  d.classList.add('show');
-}
-
-// ─── Wallet UI ───────────────────────────────────────────
+// ── Wallet
 function updateWallet(delta){
   walBal.textContent=bal.toLocaleString()+' 🪙';
-  const diff=bal-START_BAL;
-  walSub.textContent=(diff>=0?'▲ +':'▼ ')+Math.abs(diff).toLocaleString()+' from start';
-  if(delta>0){walBal.className='wallet-bal up';setTimeout(()=>walBal.className='wallet-bal',600);}
-  else if(delta<0){walBal.className='wallet-bal down';setTimeout(()=>walBal.className='wallet-bal',600);}
-
-  // badges
+  const diff=bal-START_BAL;walSub.textContent=(diff>=0?'▲ +':'▼ ')+Math.abs(diff).toLocaleString()+' from start';
+  if(delta>0){walBal.className='wallet-bal up';setTimeout(()=>walBal.className='wallet-bal',600)}
+  else if(delta<0){walBal.className='wallet-bal down';setTimeout(()=>walBal.className='wallet-bal',600)}
+  if(bal>peak)peak=bal;
   const badges=[];
-  if(bal>peak){peak=bal;badges.push({t:'New high! 🏆',c:'gold'});}
-  if(bW>=3&&bW===bW+bL) badges.push({t:'Perfect 💯',c:'gold'});
-  if(streak>=5) badges.push({t:streak+'× streak 🔥',c:'gold'});
-  if(bL>bW&&bL>=3) badges.push({t:'Cold streak ❄️',c:'red'});
+  if(peak>=2000)badges.push({t:'🏆 Peak: '+peak.toLocaleString(),c:'gold'});
+  if(bL>bW&&bL>=3)badges.push({t:'❄️ Cold streak',c:'red'});
+  if(betWinStreak>=3)badges.push({t:'🔥 '+betWinStreak+'W',c:'green'});
   walBadges.innerHTML=badges.map(b=>`<span class="badge ${b.c}">${b.t}</span>`).join('');
-
-  // slider max = balance (don't let them wager more than they have)
-  slider.max=Math.max(10,bal);
-  if(wager>bal) setWager(Math.max(10,Math.floor(bal/10)*10));
+  slider.max=Math.max(10,bal);if(wager>bal)setWager(Math.max(10,Math.floor(bal/10)*10));
   updatePayoutLabels();
 }
+function updatePayoutLabels(){const win=Math.round(wager*WIN_MULT),lose=Math.round(wager*LOSE_MULT);document.getElementById('bHPayout').textContent='win +'+win+' · lose -'+lose+' 🪙';document.getElementById('bTPayout').textContent='win +'+win+' · lose -'+lose+' 🪙';document.getElementById('wagerVal').textContent=wager+' 🪙'}
+function setWager(v){wager=Math.max(10,Math.min(v,bal));slider.value=wager;document.querySelectorAll('.preset').forEach(b=>b.classList.remove('on'));updatePayoutLabels()}
+function onSlider(v){wager=parseInt(v);document.querySelectorAll('.preset').forEach(b=>b.classList.remove('on'));updatePayoutLabels()}
+function setWagerHalf(){setWager(Math.max(10,Math.floor(bal/2/10)*10))}
+function setWagerAll(){wentAllIn=true;setWager(bal)}
+function setBet(side){if(busy)return;betChoice=side;bHBtn.className='bet-btn'+(side==='h'?' sh':'');bTBtn.className='bet-btn'+(side==='t'?' st':'')}
 
-function updatePayoutLabels(){
-  const win=Math.round(wager*WIN_MULT);
-  const lose=Math.round(wager*LOSE_MULT);
-  document.getElementById('bHPayout').textContent='win +'+win+' 🪙  ·  lose -'+lose+' 🪙';
-  document.getElementById('bTPayout').textContent='win +'+win+' 🪙  ·  lose -'+lose+' 🪙';
-  document.getElementById('wagerVal').textContent=wager+' 🪙';
-}
+// ── Animation
+function animateCoin(targetY,durationMs,onDone){const start=performance.now();function frame(now){let p=(now-start)/durationMs;if(p>=1)p=1;const e=1-Math.pow(1-p,3);const sc=1+.15*Math.sin(p*Math.PI);coinEl.style.transform=`rotateY(${targetY*e}deg) scale(${sc})`;if(p<1)requestAnimationFrame(frame);else{coinEl.style.transform=`rotateY(${targetY}deg) scale(1)`;onDone()}}requestAnimationFrame(frame)}
 
-// ─── Wager controls ──────────────────────────────────────
-function setWager(v){
-  wager=Math.max(10,Math.min(v,bal));
-  slider.value=wager;
-  document.querySelectorAll('.preset').forEach(b=>b.classList.remove('on'));
-  updatePayoutLabels();
-}
-function onSlider(v){wager=parseInt(v);document.querySelectorAll('.preset').forEach(b=>b.classList.remove('on'));updatePayoutLabels();}
-function setWagerHalf(){setWager(Math.max(10,Math.floor(bal/2/10)*10));}
-function setWagerAll(){setWager(bal);}
-
-// ─── Bet selection ───────────────────────────────────────
-function setBet(side){
-  if(busy)return;
-  betChoice=side;
-  bHBtn.className='bet-btn'+(side==='h'?' sh':'');
-  bTBtn.className='bet-btn'+(side==='t'?' st':'');
-}
-
-// ─── Animation ───────────────────────────────────────────
-function animateCoin(targetY,durationMs,onDone){
-  const start=performance.now();
-  function frame(now){
-    let p=(now-start)/durationMs;if(p>=1)p=1;
-    const e=1-Math.pow(1-p,3);
-    const angle=targetY*e;
-    const sc=1+.15*Math.sin(p*Math.PI);
-    coinEl.style.transform=`rotateY(${angle}deg) scale(${sc})`;
-    if(p<1)requestAnimationFrame(frame);
-    else{coinEl.style.transform=`rotateY(${targetY}deg) scale(1)`;onDone();}
-  }
-  requestAnimationFrame(frame);
-}
-
-// ─── Flip ────────────────────────────────────────────────
+// ── Flip
 function flip(){
-  if(busy)return;
-  if(actx.state==='suspended')actx.resume();
+  if(busy)return;if(actx.state==='suspended')actx.resume();
   busy=true;flipBtn.disabled=true;
-
   const isH=Math.random()<.5;
   const spins=5+Math.floor(Math.random()*4);
   const finalY=spins*360+(isH?0:180);
   const dur=1400+Math.floor(Math.random()*500);
-
-  playFlip();
-  resEl.style.opacity='0';
-
+  playFlip();resEl.style.opacity='0';
   animateCoin(finalY,dur,()=>{
     coinEl.style.transform=`rotateY(${isH?0:180}deg) scale(1)`;
-
     if(isH)h++;else t++;
-    streak=(last===(isH?'h':'t'))?streak+1:1;
-    last=isH?'h':'t';
-    flipN++;
+    streak=(last===(isH?'h':'t'))?streak+1:1;last=isH?'h':'t';flipN++;
     const total=h+t;
-
     playLand(isH);
-    resEl.className='result '+(isH?'h-txt':'t-txt');
-    resEl.textContent=isH?'Heads':'Tails';
-    resEl.style.opacity='1';
-
-    // streak display
-    if(streak>=3){
-      stkEl.className='streak hot';
-      stkEl.textContent=streak+' '+(isH?'heads':'tails')+' in a row 🔥';
-      if(streak%3===0)confetti(false);
-    }else{
-      stkEl.className='streak';
-      stkEl.textContent=Math.round((isH?h:t)/total*100)+'% '+(isH?'heads':'tails')+' so far';
-    }
-
-    // ── Currency resolution ──────────────────────────────
-    let delta=0;
-    let betTag='';
+    resEl.className='result '+(isH?'h-txt':'t-txt');resEl.textContent=isH?'Heads':'Tails';resEl.style.opacity='1';
+    if(streak>=3){stkEl.className='streak hot';stkEl.textContent=streak+' '+(isH?'heads':'tails')+' in a row 🔥';if(streak%3===0)confetti(false)}
+    else{stkEl.className='streak';stkEl.textContent=Math.round((isH?h:t)/total*100)+'% '+(isH?'heads':'tails')+' so far'}
+    updateBtnGlow();
+    let delta=0,betTag='nb';
     if(betChoice){
       const won=(isH&&betChoice==='h')||(!isH&&betChoice==='t');
-      // streak bonus: if 3+ streak AND bet correctly on that side
-      const streakBonus=(won&&streak>=3)?Math.round(wager*STREAK_BONUS*(streak-2)):0;
+      const sb=(won&&streak>=3)?Math.round(wager*STREAK_BONUS*(streak-2)):0;
       if(won){
-        const profit=Math.round(wager*WIN_MULT)+streakBonus;
-        bal+=profit; delta=+profit; totalWon+=profit; bW++;
+        const profit=Math.round(wager*WIN_MULT)+sb;
+        bal+=profit;delta=+profit;totalWon+=profit;bW++;betWinStreak++;
         const big=profit>=500||streak>=5;
         if(big)playBigWin();else playWin();
         if(big||streak>=5)confetti(true);else confetti(false);
-        betTag='w';
-        if(streakBonus>0){
-          resEl.textContent=(isH?'Heads':'Tails')+' 🔥 BONUS!';
-        }
+        betTag='w';if(sb>0)resEl.textContent=(isH?'Heads':'Tails')+' 🔥 BONUS!';
+        if(wasLow&&bal>=500){madeComeback=true;wasLow=false}
       }else{
         const loss=Math.round(wager*LOSE_MULT);
-        bal=Math.max(0,bal-loss); delta=-loss; totalLost+=loss; bL++;
-        playLose();
-        betTag='l';
+        bal=Math.max(0,bal-loss);delta=-loss;totalLost+=loss;bL++;betWinStreak=0;playLose();betTag='l';
       }
       betChoice=null;bHBtn.className='bet-btn';bTBtn.className='bet-btn';
-    }else{
-      betTag='nb';
-    }
-
-    // show floating delta
-    if(delta!==0) showDelta(delta,walBal);
-
-    // update balance & chart
-    balHistory.push(bal);
-    if(balHistory.length>60)balHistory.shift();
-    updateWallet(delta);
-    drawChart();
-
-    // stats
-    document.getElementById('hN').textContent=h;
-    document.getElementById('tN').textContent=t;
-    document.getElementById('tot').textContent=total;
-    barEl.style.width=(h/total*100)+'%';
-    wrEl.textContent='heads '+Math.round(h/total*100)+'%  ·  tails '+Math.round(t/total*100)+'%';
-
-    addLog(isH,delta,betTag);
-
-    // broke?
-    if(bal<10){
-      setTimeout(()=>document.getElementById('brokeOverlay').classList.add('show'),400);
-    }
-
+    }else{betWinStreak=0}
+    if(bal<100)wasLow=true;
+    if(delta!==0)showDelta(delta,walBal);
+    balHistory.push(bal);if(balHistory.length>60)balHistory.shift();
+    updateWallet(delta);drawChart();
+    document.getElementById('hN').textContent=h;document.getElementById('tN').textContent=t;document.getElementById('tot').textContent=total;
+    barEl.style.width=(h/total*100)+'%';wrEl.textContent='heads '+Math.round(h/total*100)+'%  ·  tails '+Math.round(t/total*100)+'%';
+    addLog(isH,delta,betTag);checkAchievements();
+    if(bal<10)setTimeout(()=>document.getElementById('brokeOverlay').classList.add('show'),400);
     busy=false;flipBtn.disabled=false;
   });
 }
 
-function addLog(isH,delta,tag){
-  const d=new Date();
-  const ts=d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0')+':'+d.getSeconds().toString().padStart(2,'0');
-  log.unshift({isH,n:flipN,ts,delta,tag});
-  if(log.length>60)log.pop();
-  renderLog();
-}
-function renderLog(){
-  hCnt.textContent=log.length+' flip'+(log.length!==1?'s':'');
-  if(!log.length){hList.innerHTML='<div style="padding:16px;text-align:center;color:var(--muted);font-family:\'DM Mono\',monospace;font-size:.73rem;letter-spacing:.1em">no flips yet</div>';return;}
-  hList.innerHTML=log.map(f=>{
-    const chg=f.tag==='nb'?'<span class="hchg nb">no bet</span>':
-              f.tag==='w'?`<span class="hchg w">+${f.delta}🪙</span>`:
-              `<span class="hchg l">${f.delta}🪙</span>`;
-    return`<div class="hist-item">
-      <div class="hdot ${f.isH?'h':'t'}"></div>
-      <span class="hnum">#${f.n}</span>
-      <span class="hlbl ${f.isH?'h':'t'}">${f.isH?skins[skin].h+' Heads':skins[skin].t+' Tails'}</span>
-      ${chg}
-      <span class="htime">${f.ts}</span>
-    </div>`;
-  }).join('');
-}
+function addLog(isH,delta,tag){const d=new Date();const ts=d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0')+':'+d.getSeconds().toString().padStart(2,'0');log.unshift({isH,n:flipN,ts,delta,tag});if(log.length>60)log.pop();renderLog()}
+function renderLog(){hCnt.textContent=log.length+' flip'+(log.length!==1?'s':'');if(!log.length){hList.innerHTML='<div style="padding:16px;text-align:center;color:var(--muted);font-family:\'DM Mono\',monospace;font-size:.73rem;letter-spacing:.1em">no flips yet</div>';return}hList.innerHTML=log.map(f=>{const chg=f.tag==='nb'?'<span class="hchg nb">no bet</span>':f.tag==='w'?`<span class="hchg w">+${f.delta}🪙</span>`:`<span class="hchg l">${f.delta}🪙</span>`;return`<div class="hist-item"><div class="hdot ${f.isH?'h':'t'}"></div><span class="hnum">#${f.n}</span><span class="hlbl ${f.isH?'h':'t'}">${f.isH?SKIN_LABELS[skin][0]:SKIN_LABELS[skin][1]}</span>${chg}<span class="htime">${f.ts}</span></div>`}).join('')}
 
-function setSkin(name,btn){
-  document.querySelectorAll('.skin-btn').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');coinEl.className='coin s-'+name;skin=name;
-  document.getElementById('hSym').textContent=skins[name].h;
-  document.getElementById('tSym').textContent=skins[name].t;
-  document.getElementById('bHLabel').textContent=skins[name].h+' Heads';
-  document.getElementById('bTLabel').textContent=skins[name].t+' Tails';
-  renderLog();
-}
+function setSkin(name,btn){document.querySelectorAll('.skin-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');skin=name;applySkin(name);renderLog()}
+function rebuy(){bal+=500;balHistory.push(bal);document.getElementById('brokeOverlay').classList.remove('show');updateWallet(500);drawChart()}
+function toggleSound(){soundOn=!soundOn;document.getElementById('sndBtn').textContent=soundOn?'🔊':'🔇'}
+function toggleTheme(){light=!light;document.body.classList.toggle('light',light);document.getElementById('thmBtn').textContent=light?'☀️':'🌙'}
+function resetAll(){if(busy)return;h=0;t=0;streak=0;last=null;flipN=0;betChoice=null;bW=0;bL=0;totalWon=0;totalLost=0;bal=START_BAL;peak=START_BAL;wager=50;betWinStreak=0;wentAllIn=false;madeComeback=false;wasLow=false;unlockedAch.clear();balHistory.length=0;balHistory.push(START_BAL);log.length=0;slider.value=50;document.getElementById('hN').textContent=0;document.getElementById('tN').textContent=0;document.getElementById('tot').textContent=0;barEl.style.width='50%';resEl.className='result idle';resEl.textContent='pick a side & flip';stkEl.className='streak';stkEl.textContent='';bHBtn.className='bet-btn';bTBtn.className='bet-btn';wrEl.textContent='';coinEl.style.transform='';walBadges.innerHTML='';document.getElementById('orbRing1').style.opacity='0.55';document.getElementById('orbRing2').style.opacity='0.35';document.getElementById('btnGlow').style.background='var(--gold-m)';updateWallet(0);drawChart();renderLog();renderAch()}
 
-function rebuy(){
-  bal+=500;balHistory.push(bal);
-  document.getElementById('brokeOverlay').classList.remove('show');
-  updateWallet(500);drawChart();
-}
-
-function toggleSound(){soundOn=!soundOn;document.getElementById('sndBtn').textContent=soundOn?'🔊':'🔇';}
-function toggleTheme(){light=!light;document.body.classList.toggle('light',light);document.getElementById('thmBtn').textContent=light?'☀️':'🌙';}
-
-function resetAll(){
-  if(busy)return;
-  h=0;t=0;streak=0;last=null;flipN=0;
-  betChoice=null;bW=0;bL=0;totalWon=0;totalLost=0;
-  bal=START_BAL;peak=START_BAL;wager=50;
-  balHistory.length=0;balHistory.push(START_BAL);
-  log.length=0;
-  slider.value=50;
-  document.getElementById('hN').textContent=0;
-  document.getElementById('tN').textContent=0;
-  document.getElementById('tot').textContent=0;
-  barEl.style.width='50%';
-  resEl.className='result idle';resEl.textContent='pick a side & flip';
-  stkEl.className='streak';stkEl.textContent='';
-  bHBtn.className='bet-btn';bTBtn.className='bet-btn';
-  wrEl.textContent='';coinEl.style.transform='';
-  walBadges.innerHTML='';
-  updateWallet(0);drawChart();renderLog();
-}
-
-// init
-updateWallet(0);drawChart();updatePayoutLabels();
-document.addEventListener('keydown',e=>{
-  if(e.key===' '||e.key==='Enter'){e.preventDefault();flip();}
-  if(e.key==='h'||e.key==='H')setBet('h');
-  if(e.key==='t'||e.key==='T')setBet('t');
-  if(e.key==='r'||e.key==='R')resetAll();
-});
+updateWallet(0);drawChart();updatePayoutLabels();renderAch();
+document.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();flip()}if(e.key==='h'||e.key==='H')setBet('h');if(e.key==='t'||e.key==='T')setBet('t');if(e.key==='r'||e.key==='R')resetAll()});
 </script>
 </body>
 </html>
