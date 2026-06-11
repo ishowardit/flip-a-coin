@@ -153,6 +153,78 @@ h1{font-family:'DM Mono',monospace;font-size:.95rem;font-weight:400;letter-spaci
 .broke-btn{background:var(--gold-m);color:#1A1200;border:none;border-radius:10px;padding:12px 32px;font-family:'DM Mono',monospace;font-size:.8rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
 .broke-btn:hover{background:var(--gold-l)}
 #cc{position:fixed;inset:0;pointer-events:none;width:100%;height:100%;z-index:999}
+
+/* ── XP BAR ── */
+.xp-bar-wrap{width:100%;max-width:460px;margin-bottom:1rem}
+.xp-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.xp-label{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.xp-level{font-family:'DM Mono',monospace;font-size:.75rem;font-weight:500;color:var(--gold-l)}
+.xp-track{width:100%;height:6px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.xp-fill{height:100%;background:linear-gradient(90deg,#60A5FA,#A78BFA);border-radius:3px;transition:width .4s ease}
+.xp-sub{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);margin-top:3px;text-align:right}
+
+/* ── SHOP BUTTON ── */
+.shop-open-btn{width:100%;max-width:460px;margin-bottom:1rem;background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid rgba(167,139,250,.3);border-radius:12px;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:all .2s}
+.shop-open-btn:hover{border-color:rgba(167,139,250,.6);background:rgba(167,139,250,.06)}
+.shop-open-left{display:flex;align-items:center;gap:10px}
+.shop-open-icon{font-size:20px}
+.shop-open-text{font-family:'DM Mono',monospace;font-size:.78rem;font-weight:500;color:var(--text);letter-spacing:.08em}
+.shop-open-sub{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted)}
+.shop-open-arrow{color:var(--muted);font-size:.85rem;font-family:'DM Mono',monospace}
+
+/* ── SHOP OVERLAY ── */
+.shop-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:4000;align-items:flex-end;justify-content:center}
+.shop-overlay.show{display:flex}
+.shop-panel{background:var(--bg);border:1px solid var(--border);border-radius:20px 20px 0 0;width:100%;max-width:480px;max-height:88vh;overflow-y:auto;padding:0 0 2rem}
+.shop-panel::-webkit-scrollbar{width:4px}
+.shop-panel::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:2px}
+.shop-header{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--border);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;z-index:1}
+.shop-title{font-family:'DM Mono',monospace;font-size:.9rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase}
+.shop-close{background:var(--bg2);border:1px solid var(--border);border-radius:8px;width:32px;height:32px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center}
+.shop-bal{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--gold-l);padding:0 20px;margin-top:10px;margin-bottom:6px}
+.shop-section{padding:10px 20px 4px;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.shop-grid{display:flex;flex-direction:column;gap:8px;padding:0 16px}
+.shop-item{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;transition:all .2s}
+.shop-item:hover{border-color:rgba(167,139,250,.35)}
+.shop-item.owned{border-color:rgba(74,222,128,.3);background:rgba(74,222,128,.04)}
+.shop-item.maxed{opacity:.5}
+.shop-item.active-boost{border-color:rgba(255,140,66,.4);background:rgba(255,140,66,.06)}
+.shop-icon{font-size:26px;flex-shrink:0;width:36px;text-align:center}
+.shop-info{flex:1}
+.shop-name{font-family:'DM Mono',monospace;font-size:.78rem;font-weight:500;color:var(--text);margin-bottom:2px}
+.shop-desc{font-size:.68rem;color:var(--muted);line-height:1.4}
+.shop-level{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--gold-l);margin-top:3px}
+.shop-buy-btn{flex-shrink:0;background:var(--gold-m);color:#1A1200;border:none;border-radius:8px;padding:7px 14px;font-family:'DM Mono',monospace;font-size:.72rem;font-weight:500;cursor:pointer;transition:all .15s;white-space:nowrap}
+.shop-buy-btn:hover{background:var(--gold-l)}
+.shop-buy-btn:disabled{opacity:.4;cursor:not-allowed;background:var(--bg3);color:var(--muted)}
+.shop-buy-btn.purple{background:#7C3AED;color:#fff}
+.shop-buy-btn.purple:hover{background:#8B5CF6}
+
+/* ── ACTIVE UPGRADES BAR ── */
+.upgrades-bar{width:100%;max-width:460px;display:flex;gap:6px;flex-wrap:wrap;margin-bottom:.8rem;min-height:0}
+.upg-pill{font-family:'DM Mono',monospace;font-size:.65rem;padding:3px 10px;border-radius:20px;border:1px solid;letter-spacing:.06em}
+.upg-pill.perm{color:#A78BFA;border-color:rgba(167,139,250,.35);background:rgba(167,139,250,.08)}
+.upg-pill.temp{color:var(--orange);border-color:rgba(255,140,66,.35);background:rgba(255,140,66,.08)}
+.upg-pill.auto{color:#4ADE80;border-color:rgba(74,222,128,.35);background:rgba(74,222,128,.08)}
+
+/* ── DOUBLE OR NOTHING ── */
+.don-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:5000;align-items:center;justify-content:center}
+.don-overlay.show{display:flex}
+.don-box{background:var(--bg2);border:1px solid rgba(255,140,66,.5);border-radius:20px;padding:28px 32px;text-align:center;max-width:300px;width:90%}
+.don-box h2{font-family:'DM Mono',monospace;font-size:1.1rem;font-weight:500;margin-bottom:6px}
+.don-amount{font-family:'DM Mono',monospace;font-size:1.8rem;font-weight:500;color:var(--gold-l);margin:10px 0}
+.don-desc{font-size:.82rem;color:var(--muted);margin-bottom:18px;line-height:1.6}
+.don-btns{display:flex;gap:10px}
+.don-yes{flex:1;background:#FF8C42;color:#1A0800;border:none;border-radius:10px;padding:12px;font-family:'DM Mono',monospace;font-size:.8rem;font-weight:500;cursor:pointer;letter-spacing:.1em}
+.don-no{flex:1;background:none;border:1px solid var(--border);border-radius:10px;padding:12px;color:var(--muted);font-family:'DM Mono',monospace;font-size:.8rem;cursor:pointer}
+.don-yes:hover{background:#FFA060}
+.don-no:hover{color:var(--text)}
+
+/* ── AUTO FLIP STATUS ── */
+.auto-status{width:100%;max-width:460px;background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.25);border-radius:10px;padding:8px 14px;margin-bottom:.8rem;display:none;justify-content:space-between;align-items:center}
+.auto-status.show{display:flex}
+.auto-status-text{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--green)}
+.auto-stop-btn{background:none;border:1px solid rgba(74,222,128,.35);border-radius:6px;padding:4px 10px;font-family:'DM Mono',monospace;font-size:.68rem;color:var(--green);cursor:pointer}
 </style>
 </head>
 <body>
@@ -175,6 +247,67 @@ h1{font-family:'DM Mono',monospace;font-size:.95rem;font-weight:400;letter-spaci
   <div class="top-btns">
     <button class="icon-btn" id="sndBtn" onclick="toggleSound()">🔊</button>
     <button class="icon-btn" id="thmBtn" onclick="toggleTheme()">🌙</button>
+  </div>
+</div>
+
+<!-- XP Bar -->
+<div class="xp-bar-wrap">
+  <div class="xp-row">
+    <span class="xp-label">level</span>
+    <span class="xp-level" id="xpLevel">Lv 1 — Novice</span>
+  </div>
+  <div class="xp-track"><div class="xp-fill" id="xpFill" style="width:0%"></div></div>
+  <div class="xp-sub" id="xpSub">0 / 100 XP</div>
+</div>
+
+<!-- Active upgrades pills -->
+<div class="upgrades-bar" id="upgradesBar"></div>
+
+<!-- Shop button -->
+<button class="shop-open-btn" onclick="openShop()">
+  <div class="shop-open-left">
+    <div class="shop-open-icon">🏪</div>
+    <div>
+      <div class="shop-open-text">Upgrade Shop</div>
+      <div class="shop-open-sub" id="shopBtnSub">Buy upgrades &amp; boosts</div>
+    </div>
+  </div>
+  <div class="shop-open-arrow">▶</div>
+</button>
+
+<!-- Auto-flip status bar -->
+<div class="auto-status" id="autoStatus">
+  <span class="auto-status-text" id="autoStatusText">Auto-flip running...</span>
+  <button class="auto-stop-btn" onclick="stopAuto()">Stop</button>
+</div>
+
+<!-- Shop overlay -->
+<div class="shop-overlay" id="shopOverlay" onclick="shopBgClick(event)">
+  <div class="shop-panel">
+    <div class="shop-header">
+      <div class="shop-title">🏪 Upgrade Shop</div>
+      <button class="shop-close" onclick="closeShop()">✕</button>
+    </div>
+    <div class="shop-bal" id="shopBal">Balance: 1,000 🪙</div>
+    <div class="shop-section">Permanent Upgrades</div>
+    <div class="shop-grid" id="shopPermanent"></div>
+    <div class="shop-section" style="margin-top:12px">Temporary Boosts</div>
+    <div class="shop-grid" id="shopTemporary"></div>
+    <div class="shop-section" style="margin-top:12px">Special</div>
+    <div class="shop-grid" id="shopSpecial"></div>
+  </div>
+</div>
+
+<!-- Double or Nothing overlay -->
+<div class="don-overlay" id="donOverlay">
+  <div class="don-box">
+    <h2>🎰 Double or Nothing?</h2>
+    <div class="don-amount" id="donAmount">+0 🪙</div>
+    <div class="don-desc">Risk your entire winnings on one more flip.<br>Win → 2× · Lose → walk away with nothing.</div>
+    <div class="don-btns">
+      <button class="don-yes" onclick="donAccept()">Double It!</button>
+      <button class="don-no" onclick="donDecline()">Take the Win</button>
+    </div>
   </div>
 </div>
 
@@ -567,10 +700,412 @@ function setSkin(name,btn){document.querySelectorAll('.skin-btn').forEach(b=>b.c
 function rebuy(){bal+=500;balHistory.push(bal);document.getElementById('brokeOverlay').classList.remove('show');updateWallet(500);drawChart()}
 function toggleSound(){soundOn=!soundOn;document.getElementById('sndBtn').textContent=soundOn?'🔊':'🔇'}
 function toggleTheme(){light=!light;document.body.classList.toggle('light',light);document.getElementById('thmBtn').textContent=light?'☀️':'🌙'}
-function resetAll(){if(busy)return;h=0;t=0;streak=0;last=null;flipN=0;betChoice=null;bW=0;bL=0;totalWon=0;totalLost=0;bal=START_BAL;peak=START_BAL;wager=50;betWinStreak=0;wentAllIn=false;madeComeback=false;wasLow=false;unlockedAch.clear();balHistory.length=0;balHistory.push(START_BAL);log.length=0;slider.value=50;document.getElementById('hN').textContent=0;document.getElementById('tN').textContent=0;document.getElementById('tot').textContent=0;barEl.style.width='50%';resEl.className='result idle';resEl.textContent='pick a side & flip';stkEl.className='streak';stkEl.textContent='';bHBtn.className='bet-btn';bTBtn.className='bet-btn';wrEl.textContent='';coinEl.style.transform='';walBadges.innerHTML='';setShadow(1);document.getElementById('orbRing1').style.opacity='0.55';document.getElementById('orbRing2').style.opacity='0.35';document.getElementById('btnGlow').style.background='var(--gold-m)';document.getElementById('mfProgress').classList.remove('show');document.getElementById('mfStatus').textContent='';updateWallet(0);drawChart();renderLog();renderAch()}
 
-updateWallet(0);drawChart();updatePayoutLabels();renderAch();setShadow(1);
-document.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();startFlipSequence()}if(e.key==='h'||e.key==='H')setBet('h');if(e.key==='t'||e.key==='T')setBet('t');if(e.key==='r'||e.key==='R')resetAll()});
+// ── XP & LEVELS ─────────────────────────────────────────
+let xp=0, level=1;
+const LEVELS=[
+  {name:'Novice',xp:0},      // 1
+  {name:'Flipper',xp:100},   // 2
+  {name:'Gambler',xp:250},   // 3
+  {name:'Hustler',xp:500},   // 4
+  {name:'High Roller',xp:900},// 5
+  {name:'Shark',xp:1500},    // 6
+  {name:'Whale',xp:2500},    // 7
+  {name:'Legend',xp:4000},   // 8
+  {name:'Myth',xp:6000},     // 9
+  {name:'God Mode',xp:10000},// 10 — max
+];
+function addXP(amount){
+  xp+=amount;
+  let newLevel=1;
+  for(let i=0;i<LEVELS.length;i++){if(xp>=LEVELS[i].xp)newLevel=i+1;}
+  newLevel=Math.min(newLevel,LEVELS.length);
+  if(newLevel>level){
+    level=newLevel;
+    showLevelUp();
+  } else {level=newLevel;}
+  renderXP();
+}
+function renderXP(){
+  const cur=LEVELS[level-1], next=LEVELS[level]||null;
+  document.getElementById('xpLevel').textContent='Lv '+level+' — '+(LEVELS[level-1]?.name||'Max');
+  if(next){
+    const pct=Math.min(100,Math.round((xp-cur.xp)/(next.xp-cur.xp)*100));
+    document.getElementById('xpFill').style.width=pct+'%';
+    document.getElementById('xpSub').textContent=xp+' / '+next.xp+' XP';
+  } else {
+    document.getElementById('xpFill').style.width='100%';
+    document.getElementById('xpSub').textContent='MAX LEVEL 🏆';
+  }
+}
+function showLevelUp(){
+  // reuse ach toast
+  const t=document.getElementById('achToast');
+  document.getElementById('achToastIcon').textContent='⬆️';
+  document.getElementById('achToastTitle').textContent='Level Up! Now Lv '+level;
+  document.getElementById('achToastDesc').textContent=LEVELS[level-1].name+' — unlocked new shop items!';
+  t.classList.add('show');
+  if(soundOn){[523,659,880,1047,1319].forEach((f,i)=>beep(f,'sine',.15,i*.08,.2));}
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// ── SHOP DEFINITIONS ────────────────────────────────────
+// Permanent upgrades: can be leveled up multiple times
+// Temporary: limited flips/duration
+// Special: unique one-time or complex mechanics
+
+const PERM_UPGRADES=[
+  {id:'lucky_charm',  icon:'🍀', name:'Lucky Charm',      desc:'Win payout +10% per level',    maxLvl:5, baseCost:200, costMult:1.8, effect:()=>{ /* applied via getWinMult */ }},
+  {id:'insurance',    icon:'🛡️', name:'Insurance',         desc:'Lose only 5% less per level',  maxLvl:5, baseCost:150, costMult:1.6, effect:()=>{}},
+  {id:'xp_boost',     icon:'📈', name:'XP Accelerator',   desc:'+20% XP per level',            maxLvl:3, baseCost:300, costMult:2.0, effect:()=>{}},
+  {id:'interest',     icon:'🏦', name:'Interest',          desc:'Earn 1% of balance every 10 flips per level', maxLvl:3, baseCost:500, costMult:2.5, effect:()=>{}},
+  {id:'streak_amp',   icon:'🔥', name:'Streak Amplifier',  desc:'Streak bonus +10% per level',  maxLvl:4, baseCost:250, costMult:1.9, effect:()=>{}},
+];
+
+const TEMP_UPGRADES=[
+  {id:'coin_boost',   icon:'💥', name:'Coin Boost',        desc:'3× payout for next 5 flips',   cost:300, flips:5,  reqLvl:2},
+  {id:'mega_boost',   icon:'🚀', name:'Mega Boost',         desc:'5× payout for next 3 flips',   cost:600, flips:3,  reqLvl:4},
+  {id:'safety_net',   icon:'🥅', name:'Safety Net',         desc:'Next 5 losses refunded 50%',   cost:250, flips:5,  reqLvl:2},
+  {id:'hot_streak',   icon:'⚡', name:'Hot Streak',          desc:'Streak bonus doubles for 10 flips', cost:400, flips:10, reqLvl:3},
+  {id:'jackpot_mode', icon:'🎰', name:'Jackpot Mode',        desc:'10% chance of 10× payout for 8 flips', cost:800, flips:8, reqLvl:5},
+];
+
+const SPECIAL_UPGRADES=[
+  {id:'double_or_nothing', icon:'🎲', name:'Double or Nothing', desc:'After every win, get offered to 2× or lose it all', cost:500, reqLvl:3, type:'toggle'},
+  {id:'auto_flip',         icon:'🤖', name:'Auto-Flip',          desc:'Automatically flip and bet every 1.5s', cost:750, reqLvl:4, type:'toggle'},
+  {id:'rebuy_plus',        icon:'💳', name:'Credit Line',         desc:'Loans give +1,000 instead of +500', cost:400, reqLvl:2, type:'once'},
+];
+
+// Upgrade state
+let permLevels={};       // id→level
+let activeBoosts={};     // id→flipsRemaining
+let specialOwned={};     // id→true
+let donMode=false, autoFlipOn=false, autoFlipTimer=null;
+let donPendingProfit=0;
+let interestCounter=0;
+
+PERM_UPGRADES.forEach(u=>permLevels[u.id]=0);
+TEMP_UPGRADES.forEach(u=>activeBoosts[u.id]=0);
+SPECIAL_UPGRADES.forEach(u=>specialOwned[u.id]=false);
+
+// ── Derived multipliers
+function getWinMult(){
+  const charm=permLevels['lucky_charm']||0;
+  const boostFlips=activeBoosts['coin_boost']||0;
+  const megaFlips=activeBoosts['mega_boost']||0;
+  let m=WIN_MULT + charm*0.10;
+  if(boostFlips>0) m=Math.max(m, 3.0);
+  if(megaFlips>0)  m=Math.max(m, 5.0);
+  // jackpot
+  if((activeBoosts['jackpot_mode']||0)>0 && Math.random()<0.10) m=10.0;
+  return m;
+}
+function getLoseMult(){
+  const ins=permLevels['insurance']||0;
+  let m=LOSE_MULT - ins*0.05;
+  if((activeBoosts['safety_net']||0)>0) m*=0.5;
+  return Math.max(0.05, m);
+}
+function getStreakBonus(){
+  const amp=permLevels['streak_amp']||0;
+  return STREAK_BONUS + amp*0.10;
+}
+function getXPMult(){
+  return 1 + (permLevels['xp_boost']||0)*0.20;
+}
+function getUpgradeCost(u, lvl){
+  return Math.round(u.baseCost * Math.pow(u.costMult, lvl));
+}
+
+// ── Tick boosts down after each flip
+function tickBoosts(){
+  Object.keys(activeBoosts).forEach(id=>{if(activeBoosts[id]>0) activeBoosts[id]--;});
+  // interest
+  interestCounter++;
+  const intLvl=permLevels['interest']||0;
+  if(intLvl>0 && interestCounter%(Math.max(1,10-intLvl*2))===0){
+    const gain=Math.round(bal*0.01*intLvl);
+    if(gain>0){bal+=gain;showDelta(gain,document.getElementById('walBal'));balHistory.push(bal);updateWallet(gain);drawChart();}
+  }
+  renderUpgradesBar();
+}
+
+// ── Upgrades bar pills
+function renderUpgradesBar(){
+  const bar=document.getElementById('upgradesBar');
+  const pills=[];
+  PERM_UPGRADES.forEach(u=>{const l=permLevels[u.id]||0;if(l>0)pills.push(`<span class="upg-pill perm">${u.icon} ${u.name} Lv${l}</span>`);});
+  TEMP_UPGRADES.forEach(u=>{const f=activeBoosts[u.id]||0;if(f>0)pills.push(`<span class="upg-pill temp">${u.icon} ${u.name} ×${f}</span>`);});
+  if(specialOwned['double_or_nothing']&&donMode)pills.push(`<span class="upg-pill perm">🎲 DoN On</span>`);
+  if(autoFlipOn)pills.push(`<span class="upg-pill auto">🤖 Auto-Flip</span>`);
+  bar.innerHTML=pills.join('');
+}
+
+// ── Shop render
+function openShop(){
+  document.getElementById('shopOverlay').classList.add('show');
+  renderShop();
+}
+function closeShop(){document.getElementById('shopOverlay').classList.remove('show')}
+function shopBgClick(e){if(e.target===document.getElementById('shopOverlay'))closeShop();}
+
+function renderShop(){
+  document.getElementById('shopBal').textContent='Balance: '+bal.toLocaleString()+' 🪙  ·  Level '+level;
+  // Permanent
+  document.getElementById('shopPermanent').innerHTML=PERM_UPGRADES.map(u=>{
+    const lvl=permLevels[u.id]||0;
+    const maxed=lvl>=u.maxLvl;
+    const cost=maxed?0:getUpgradeCost(u,lvl);
+    const canAfford=bal>=cost;
+    return`<div class="shop-item${maxed?' maxed':''}">
+      <div class="shop-icon">${u.icon}</div>
+      <div class="shop-info">
+        <div class="shop-name">${u.name}</div>
+        <div class="shop-desc">${u.desc}</div>
+        <div class="shop-level">${maxed?'MAX LEVEL':'Level '+lvl+' / '+u.maxLvl}</div>
+      </div>
+      <button class="shop-buy-btn purple" onclick="buyPerm('${u.id}')" ${maxed||!canAfford?'disabled':''}>
+        ${maxed?'Maxed':cost.toLocaleString()+' 🪙'}
+      </button>
+    </div>`;
+  }).join('');
+  // Temporary
+  document.getElementById('shopTemporary').innerHTML=TEMP_UPGRADES.map(u=>{
+    const locked=level<u.reqLvl;
+    const active=(activeBoosts[u.id]||0)>0;
+    const canAfford=bal>=u.cost;
+    return`<div class="shop-item${active?' active-boost':''}">
+      <div class="shop-icon">${u.icon}</div>
+      <div class="shop-info">
+        <div class="shop-name">${u.name}${active?` <span style="color:var(--orange)">(${activeBoosts[u.id]} left)</span>`:''}</div>
+        <div class="shop-desc">${u.desc}</div>
+        <div class="shop-level">${locked?'🔒 Requires Lv '+u.reqLvl:'Stackable boost'}</div>
+      </div>
+      <button class="shop-buy-btn" onclick="buyTemp('${u.id}')" ${locked||!canAfford?'disabled':''}>
+        ${locked?'Locked':u.cost.toLocaleString()+' 🪙'}
+      </button>
+    </div>`;
+  }).join('');
+  // Special
+  document.getElementById('shopSpecial').innerHTML=SPECIAL_UPGRADES.map(u=>{
+    const locked=level<u.reqLvl;
+    const owned=specialOwned[u.id];
+    const isOn=u.id==='double_or_nothing'?donMode:u.id==='auto_flip'?autoFlipOn:false;
+    const canAfford=bal>=u.cost;
+    let btnText=u.cost.toLocaleString()+' 🪙';
+    if(locked) btnText='Locked';
+    else if(owned && u.type==='toggle') btnText=isOn?'Turn Off':'Turn On';
+    else if(owned && u.type==='once') btnText='Owned';
+    return`<div class="shop-item${owned?' owned':''}">
+      <div class="shop-icon">${u.icon}</div>
+      <div class="shop-info">
+        <div class="shop-name">${u.name}${owned&&isOn?' 🟢':''}</div>
+        <div class="shop-desc">${u.desc}</div>
+        <div class="shop-level">${locked?'🔒 Requires Lv '+u.reqLvl:owned?'Purchased':'One-time purchase'}</div>
+      </div>
+      <button class="shop-buy-btn${owned&&u.type==='toggle'?' purple':''}" onclick="buySpecial('${u.id}')" ${(locked||(owned&&u.type==='once')||(!owned&&!canAfford))?'disabled':''}>
+        ${btnText}
+      </button>
+    </div>`;
+  }).join('');
+  // Update shop btn sub
+  const totalOwned=Object.values(permLevels).reduce((a,b)=>a+b,0)+Object.values(specialOwned).filter(Boolean).length;
+  document.getElementById('shopBtnSub').textContent=totalOwned>0?totalOwned+' upgrades owned':'Buy upgrades & boosts';
+}
+
+function buyPerm(id){
+  const u=PERM_UPGRADES.find(x=>x.id===id); if(!u) return;
+  const lvl=permLevels[id]||0; if(lvl>=u.maxLvl) return;
+  const cost=getUpgradeCost(u,lvl); if(bal<cost) return;
+  bal-=cost; permLevels[id]=lvl+1;
+  updateWallet(-cost); drawChart();
+  addXP(50+lvl*20);
+  if(soundOn) beep(660,'sine',.15,0,.15);
+  renderShop(); renderUpgradesBar(); updatePayoutLabels();
+}
+function buyTemp(id){
+  const u=TEMP_UPGRADES.find(x=>x.id===id); if(!u) return;
+  if(level<u.reqLvl||bal<u.cost) return;
+  bal-=u.cost; activeBoosts[id]=(activeBoosts[id]||0)+u.flips;
+  updateWallet(-u.cost); drawChart();
+  addXP(30);
+  if(soundOn) beep(880,'sine',.15,0,.12);
+  renderShop(); renderUpgradesBar(); updatePayoutLabels();
+}
+function buySpecial(id){
+  const u=SPECIAL_UPGRADES.find(x=>x.id===id); if(!u) return;
+  if(!specialOwned[id]){
+    if(level<u.reqLvl||bal<u.cost) return;
+    bal-=u.cost; specialOwned[id]=true;
+    updateWallet(-u.cost); drawChart();
+    addXP(80);
+    if(soundOn)[523,659,784,1047].forEach((f,i)=>beep(f,'sine',.15,i*.08,.18));
+  }
+  // toggle
+  if(id==='double_or_nothing') donMode=!donMode;
+  if(id==='auto_flip'){
+    autoFlipOn=!autoFlipOn;
+    if(autoFlipOn) startAutoFlip(); else stopAuto();
+  }
+  renderShop(); renderUpgradesBar();
+}
+
+// ── Double or Nothing
+function offerDoN(profit){
+  if(!donMode||!specialOwned['double_or_nothing']||profit<=0) return false;
+  donPendingProfit=profit;
+  document.getElementById('donAmount').textContent='+'+profit.toLocaleString()+' 🪙';
+  document.getElementById('donOverlay').classList.add('show');
+  return true; // flip sequence should wait
+}
+function donAccept(){
+  document.getElementById('donOverlay').classList.remove('show');
+  const isH=Math.random()<0.5;
+  if(isH){
+    const doubled=donPendingProfit*2;
+    bal+=doubled; showDelta(doubled,document.getElementById('walBal'));
+    resEl.textContent='🎰 DOUBLED! +'+doubled+'🪙'; resEl.className='result h-txt';
+    confetti(true); if(soundOn) playBigWin();
+  } else {
+    bal-=donPendingProfit; // take it back (was already added)
+    showDelta(-donPendingProfit,document.getElementById('walBal'));
+    resEl.textContent='💸 NOTHING!'; resEl.className='result t-txt';
+    doShake(); if(soundOn) playLose();
+  }
+  balHistory.push(bal); updateWallet(isH?donPendingProfit*2:-donPendingProfit); drawChart();
+  donPendingProfit=0;
+}
+function donDecline(){
+  document.getElementById('donOverlay').classList.remove('show');
+  donPendingProfit=0;
+}
+
+// ── Auto-flip
+function startAutoFlip(){
+  document.getElementById('autoStatus').classList.add('show');
+  scheduleAuto();
+}
+function scheduleAuto(){
+  if(!autoFlipOn) return;
+  autoFlipTimer=setTimeout(()=>{
+    if(!autoFlipOn||busy) {scheduleAuto();return;}
+    // auto-bet: always bet on the last winning side, or heads if no history
+    if(!betChoice) setBet(last||'h');
+    startFlipSequence().then(()=>{if(autoFlipOn)scheduleAuto();});
+  }, 1800);
+}
+function stopAuto(){
+  autoFlipOn=false; specialOwned['auto_flip']=false;
+  clearTimeout(autoFlipTimer);
+  document.getElementById('autoStatus').classList.remove('show');
+  renderUpgradesBar();
+}
+function updateAutoStatus(){
+  if(!autoFlipOn) return;
+  document.getElementById('autoStatusText').textContent='🤖 Auto-flip running · Lv '+level+' · '+bal.toLocaleString()+' 🪙';
+}
+
+// ── Patch startFlipSequence to return Promise, tick boosts, award XP, offer DoN
+const _origStartFlipSequence=startFlipSequence;
+startFlipSequence=async function(){
+  await _origStartFlipSequence();
+  // XP: base 5 per flip, +10 for a win
+  const lastLog=log[0];
+  const xpGain=Math.round((lastLog?.tag==='w'?15:5)*getXPMult());
+  addXP(xpGain);
+  tickBoosts();
+  updatePayoutLabels();
+  updateAutoStatus();
+  renderShop(); // keep shop live if open
+  // DoN: offer only for single-flip wins
+  if(flipCount===1 && lastLog?.tag==='w' && lastLog?.delta>0 && donMode){
+    // bal already has the profit — pass it for display, then DoN either doubles or removes it
+    offerDoN(lastLog.delta);
+  }
+};
+
+// ── Patch updatePayoutLabels to show real multipliers
+const _origUpdatePayoutLabels=updatePayoutLabels;
+updatePayoutLabels=function(){
+  const win=Math.round(wager*getWinMult());
+  const lose=Math.round(wager*getLoseMult());
+  document.getElementById('bHPayout').textContent='win +'+win+' · lose -'+lose+' 🪙';
+  document.getElementById('bTPayout').textContent='win +'+win+' · lose -'+lose+' 🪙';
+  document.getElementById('wagerVal').textContent=wager+' 🪙';
+};
+
+// ── Patch resolveFlip to use real multipliers
+const _origResolveFlip=resolveFlip;
+resolveFlip=function(isH){
+  if(isH)h++;else t++;
+  streak=(last===(isH?'h':'t'))?streak+1:1;
+  last=isH?'h':'t';flipN++;
+  const total=h+t;
+  let delta=0,betTag='nb';
+  if(betChoice){
+    const won=(isH&&betChoice==='h')||(!isH&&betChoice==='t');
+    const sb=(won&&streak>=3)?Math.round(wager*getStreakBonus()*(streak-2)):0;
+    if(won){
+      const profit=Math.round(wager*getWinMult())+sb;
+      bal+=profit;delta=+profit;totalWon+=profit;bW++;betWinStreak++;
+      betTag='w';
+      if(wasLow&&bal>=500){madeComeback=true;wasLow=false;}
+    } else {
+      const loss=Math.round(wager*getLoseMult());
+      bal=Math.max(0,bal-loss);delta=-loss;totalLost+=loss;bL++;betWinStreak=0;betTag='l';
+    }
+  } else {betWinStreak=0;}
+  if(bal<100)wasLow=true;
+  return{isH,delta,betTag,total,streak};
+};
+
+// ── Patch rebuy for credit line upgrade
+const _origRebuy=rebuy;
+rebuy=function(){
+  const bonus=specialOwned['rebuy_plus']?1000:500;
+  bal+=bonus;balHistory.push(bal);
+  document.getElementById('brokeOverlay').classList.remove('show');
+  updateWallet(bonus);drawChart();
+};
+
+function resetAll(){
+  if(busy)return;
+  stopAuto();
+  h=0;t=0;streak=0;last=null;flipN=0;betChoice=null;bW=0;bL=0;totalWon=0;totalLost=0;
+  bal=START_BAL;peak=START_BAL;wager=50;betWinStreak=0;wentAllIn=false;madeComeback=false;wasLow=false;
+  xp=0;level=1;interestCounter=0;
+  PERM_UPGRADES.forEach(u=>permLevels[u.id]=0);
+  TEMP_UPGRADES.forEach(u=>activeBoosts[u.id]=0);
+  SPECIAL_UPGRADES.forEach(u=>specialOwned[u.id]=false);
+  donMode=false;autoFlipOn=false;donPendingProfit=0;
+  unlockedAch.clear();
+  balHistory.length=0;balHistory.push(START_BAL);log.length=0;slider.value=50;
+  document.getElementById('hN').textContent=0;document.getElementById('tN').textContent=0;
+  document.getElementById('tot').textContent=0;barEl.style.width='50%';
+  resEl.className='result idle';resEl.textContent='pick a side & flip';
+  stkEl.className='streak';stkEl.textContent='';
+  bHBtn.className='bet-btn';bTBtn.className='bet-btn';
+  wrEl.textContent='';coinEl.style.transform='';walBadges.innerHTML='';
+  setShadow(1);
+  document.getElementById('orbRing1').style.opacity='0.55';
+  document.getElementById('orbRing2').style.opacity='0.35';
+  document.getElementById('btnGlow').style.background='var(--gold-m)';
+  document.getElementById('mfProgress').classList.remove('show');
+  document.getElementById('mfStatus').textContent='';
+  document.getElementById('upgradesBar').innerHTML='';
+  document.getElementById('shopBtnSub').textContent='Buy upgrades & boosts';
+  renderXP(); updateWallet(0);drawChart();renderLog();renderAch();updatePayoutLabels();
+}
+
+updateWallet(0);drawChart();updatePayoutLabels();renderAch();setShadow(1);renderXP();renderUpgradesBar();
+document.addEventListener('keydown',e=>{
+  if(e.key===' '||e.key==='Enter'){e.preventDefault();startFlipSequence();}
+  if(e.key==='h'||e.key==='H')setBet('h');
+  if(e.key==='t'||e.key==='T')setBet('t');
+  if(e.key==='r'||e.key==='R')resetAll();
+  if(e.key==='s'||e.key==='S')openShop();
+  if(e.key==='Escape')closeShop();
+});
 </script>
 </body>
 </html>
