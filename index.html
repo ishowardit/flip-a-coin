@@ -225,6 +225,58 @@ h1{font-family:'DM Mono',monospace;font-size:.95rem;font-weight:400;letter-spaci
 .auto-status.show{display:flex}
 .auto-status-text{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--green)}
 .auto-stop-btn{background:none;border:1px solid rgba(74,222,128,.35);border-radius:6px;padding:4px 10px;font-family:'DM Mono',monospace;font-size:.68rem;color:var(--green);cursor:pointer}
+
+/* ── DIMENSION PORTAL BUTTON ── */
+.dim-btn{width:100%;max-width:460px;margin-bottom:1rem;border:none;border-radius:12px;padding:13px 18px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;position:relative;overflow:hidden;transition:all .3s;background:linear-gradient(135deg,#0D0820,#1A0A30)}
+.dim-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(139,92,246,.15),transparent);animation:dimShimmer 3s linear infinite}
+@keyframes dimShimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.dim-btn-border{position:absolute;inset:0;border-radius:12px;border:1px solid rgba(139,92,246,.4);animation:dimPulse 2s ease-in-out infinite}
+@keyframes dimPulse{0%,100%{border-color:rgba(139,92,246,.3);box-shadow:0 0 0 0 rgba(139,92,246,0)}50%{border-color:rgba(139,92,246,.8);box-shadow:0 0 16px 2px rgba(139,92,246,.25)}}
+.dim-btn.active-dim{background:linear-gradient(135deg,#1A0040,#0A0820,#001A20)}
+.dim-btn.active-dim .dim-btn-border{animation:dimPulseActive 1s ease-in-out infinite}
+@keyframes dimPulseActive{0%,100%{border-color:rgba(var(--dim-rgb),.5);box-shadow:0 0 8px rgba(var(--dim-rgb),.3)}50%{border-color:rgba(var(--dim-rgb),1);box-shadow:0 0 24px 4px rgba(var(--dim-rgb),.5)}}
+.dim-left{display:flex;align-items:center;gap:10px;position:relative;z-index:1}
+.dim-icon{font-size:22px;animation:dimSpin 8s linear infinite}
+@keyframes dimSpin{to{filter:hue-rotate(360deg)}}
+.dim-title{font-family:'DM Mono',monospace;font-size:.78rem;font-weight:500;color:#C4B5FD;letter-spacing:.1em}
+.dim-sub{font-family:'DM Mono',monospace;font-size:.62rem;color:#7C3AED;margin-top:1px}
+.dim-right{position:relative;z-index:1;font-family:'DM Mono',monospace;font-size:.7rem;color:#A78BFA}
+
+/* ── DIMENSION OVERLAY (full screen portal) ── */
+.dim-overlay{display:none;position:fixed;inset:0;z-index:6000;align-items:center;justify-content:center;overflow:hidden}
+.dim-overlay.show{display:flex}
+.dim-bg-canvas{position:absolute;inset:0;width:100%;height:100%}
+.dim-content{position:relative;z-index:2;width:100%;max-width:420px;padding:0 16px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.dim-header{text-align:center}
+.dim-dim-name{font-family:'DM Mono',monospace;font-size:1.4rem;font-weight:500;letter-spacing:.1em;margin-bottom:4px;animation:dimGlitch 4s infinite}
+@keyframes dimGlitch{0%,90%,100%{transform:none;filter:none}92%{transform:translateX(-3px);filter:hue-rotate(90deg)}94%{transform:translateX(3px);filter:hue-rotate(-90deg)}96%{transform:none;filter:brightness(2)}98%{transform:translateX(-1px)}}
+.dim-tagline{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.15em;opacity:.7}
+.dim-rules{background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:14px 18px;width:100%;backdrop-filter:blur(4px)}
+.dim-rule{font-family:'DM Mono',monospace;font-size:.72rem;margin-bottom:6px;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+.dim-rule:last-child{margin-bottom:0}
+.dim-rule-icon{flex-shrink:0}
+.dim-coin-stage{position:relative;display:flex;flex-direction:column;align-items:center}
+.dim-bet-row{display:flex;gap:10px;width:100%}
+.dim-bet-btn{flex:1;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(0,0,0,.4);font-family:'DM Mono',monospace;font-size:.78rem;text-transform:uppercase;cursor:pointer;color:rgba(255,255,255,.7);transition:all .2s;text-align:center}
+.dim-bet-btn:hover,.dim-bet-btn.on{border-color:rgba(255,255,255,.6);color:#fff;background:rgba(255,255,255,.1)}
+.dim-result{font-family:'DM Mono',monospace;font-size:1.8rem;font-weight:500;min-height:2.5rem;text-align:center}
+.dim-flip-btn{width:100%;padding:15px;border:none;border-radius:12px;font-family:'DM Mono',monospace;font-size:.9rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;position:relative;overflow:hidden;transition:all .2s}
+.dim-flip-btn:disabled{opacity:.4;cursor:not-allowed}
+.dim-stats{display:flex;gap:8px;width:100%}
+.dim-stat{flex:1;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px;text-align:center;backdrop-filter:blur(4px)}
+.dim-stat-num{font-family:'DM Mono',monospace;font-size:1.4rem;font-weight:500}
+.dim-stat-lbl{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;opacity:.6;margin-top:2px}
+.dim-exit-btn{background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:8px 24px;font-family:'DM Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.6);cursor:pointer;letter-spacing:.1em;transition:all .2s}
+.dim-exit-btn:hover{border-color:rgba(255,255,255,.5);color:#fff}
+.dim-bal{font-family:'DM Mono',monospace;font-size:.78rem;letter-spacing:.1em;opacity:.8}
+
+/* dimension-specific coin glow */
+.dim-coin-wrap{position:relative}
+.dim-coin-wrap::after{content:'';position:absolute;inset:-12px;border-radius:50%;animation:dimCoinGlow 1.5s ease-in-out infinite;pointer-events:none}
+@keyframes dimCoinGlow{0%,100%{opacity:.5;transform:scale(.95)}50%{opacity:1;transform:scale(1.05)}}
+
+/* glitch text effect for dimension names */
+.dim-overlay *{transition:color .3s}
 </style>
 </head>
 <body>
@@ -242,6 +294,7 @@ h1{font-family:'DM Mono',monospace;font-size:.95rem;font-weight:400;letter-spaci
   <div><div class="ach-toast-title" id="achToastTitle"></div><div class="ach-toast-desc" id="achToastDesc"></div></div>
 </div>
 
+
 <div class="topbar">
   <h1>Coin Flip</h1>
   <div class="top-btns">
@@ -250,66 +303,6 @@ h1{font-family:'DM Mono',monospace;font-size:.95rem;font-weight:400;letter-spaci
   </div>
 </div>
 
-<!-- XP Bar -->
-<div class="xp-bar-wrap">
-  <div class="xp-row">
-    <span class="xp-label">level</span>
-    <span class="xp-level" id="xpLevel">Lv 1 — Novice</span>
-  </div>
-  <div class="xp-track"><div class="xp-fill" id="xpFill" style="width:0%"></div></div>
-  <div class="xp-sub" id="xpSub">0 / 100 XP</div>
-</div>
-
-<!-- Active upgrades pills -->
-<div class="upgrades-bar" id="upgradesBar"></div>
-
-<!-- Shop button -->
-<button class="shop-open-btn" onclick="openShop()">
-  <div class="shop-open-left">
-    <div class="shop-open-icon">🏪</div>
-    <div>
-      <div class="shop-open-text">Upgrade Shop</div>
-      <div class="shop-open-sub" id="shopBtnSub">Buy upgrades &amp; boosts</div>
-    </div>
-  </div>
-  <div class="shop-open-arrow">▶</div>
-</button>
-
-<!-- Auto-flip status bar -->
-<div class="auto-status" id="autoStatus">
-  <span class="auto-status-text" id="autoStatusText">Auto-flip running...</span>
-  <button class="auto-stop-btn" onclick="stopAuto()">Stop</button>
-</div>
-
-<!-- Shop overlay -->
-<div class="shop-overlay" id="shopOverlay" onclick="shopBgClick(event)">
-  <div class="shop-panel">
-    <div class="shop-header">
-      <div class="shop-title">🏪 Upgrade Shop</div>
-      <button class="shop-close" onclick="closeShop()">✕</button>
-    </div>
-    <div class="shop-bal" id="shopBal">Balance: 1,000 🪙</div>
-    <div class="shop-section">Permanent Upgrades</div>
-    <div class="shop-grid" id="shopPermanent"></div>
-    <div class="shop-section" style="margin-top:12px">Temporary Boosts</div>
-    <div class="shop-grid" id="shopTemporary"></div>
-    <div class="shop-section" style="margin-top:12px">Special</div>
-    <div class="shop-grid" id="shopSpecial"></div>
-  </div>
-</div>
-
-<!-- Double or Nothing overlay -->
-<div class="don-overlay" id="donOverlay">
-  <div class="don-box">
-    <h2>🎰 Double or Nothing?</h2>
-    <div class="don-amount" id="donAmount">+0 🪙</div>
-    <div class="don-desc">Risk your entire winnings on one more flip.<br>Win → 2× · Lose → walk away with nothing.</div>
-    <div class="don-btns">
-      <button class="don-yes" onclick="donAccept()">Double It!</button>
-      <button class="don-no" onclick="donDecline()">Take the Win</button>
-    </div>
-  </div>
-</div>
 
 <div class="wallet">
   <div class="wallet-top">
@@ -321,34 +314,6 @@ h1{font-family:'DM Mono',monospace;font-size:.95rem;font-weight:400;letter-spaci
     <div class="wallet-badges" id="walBadges"></div>
   </div>
   <canvas id="miniChart" height="32" style="width:100%;height:32px;opacity:.6"></canvas>
-</div>
-
-<div class="wager-wrap">
-  <div class="wager-label"><span>wager amount</span><span id="wagerVal">50 🪙</span></div>
-  <input type="range" class="wager-slider" id="wagerSlider" min="10" max="500" step="10" value="50" oninput="onSlider(this.value)">
-  <div class="wager-presets">
-    <button class="preset" onclick="setWager(10)">10</button>
-    <button class="preset" onclick="setWager(25)">25</button>
-    <button class="preset" onclick="setWager(50)">50</button>
-    <button class="preset" onclick="setWager(100)">100</button>
-    <button class="preset" onclick="setWager(250)">250</button>
-    <button class="preset" onclick="setWagerHalf()">½</button>
-    <button class="preset" onclick="setWagerAll()">All In</button>
-  </div>
-</div>
-
-<div class="multiflip-wrap">
-  <div class="multiflip-label"><span>flip count</span><span id="mfLabel">1 flip</span></div>
-  <div class="multiflip-btns">
-    <button class="mf-btn on" onclick="setMF(1,this)">×1</button>
-    <button class="mf-btn" onclick="setMF(5,this)">×5</button>
-    <button class="mf-btn" onclick="setMF(10,this)">×10</button>
-    <button class="mf-btn" onclick="setMF(25,this)">×25</button>
-    <button class="mf-btn" onclick="setMF(50,this)">×50</button>
-    <button class="mf-btn" onclick="setMF(100,this)">×100</button>
-  </div>
-  <div class="multiflip-progress" id="mfProgress"><div class="multiflip-bar" id="mfBar"></div></div>
-  <div class="multiflip-status" id="mfStatus"></div>
 </div>
 
 <div class="skin-bar">
@@ -403,6 +368,43 @@ h1{font-family:'DM Mono',monospace;font-size:.95rem;font-weight:400;letter-spaci
   <button class="btn-sec" onclick="resetAll()">Reset</button>
 </div>
 
+<div class="xp-bar-wrap">
+  <div class="xp-row">
+    <span class="xp-label">level</span>
+    <span class="xp-level" id="xpLevel">Lv 1 — Novice</span>
+  </div>
+  <div class="xp-track"><div class="xp-fill" id="xpFill" style="width:0%"></div></div>
+  <div class="xp-sub" id="xpSub">0 / 100 XP</div>
+</div>
+
+<div class="wager-wrap">
+  <div class="wager-label"><span>wager amount</span><span id="wagerVal">50 🪙</span></div>
+  <input type="range" class="wager-slider" id="wagerSlider" min="10" max="500" step="10" value="50" oninput="onSlider(this.value)">
+  <div class="wager-presets">
+    <button class="preset" onclick="setWager(10)">10</button>
+    <button class="preset" onclick="setWager(25)">25</button>
+    <button class="preset" onclick="setWager(50)">50</button>
+    <button class="preset" onclick="setWager(100)">100</button>
+    <button class="preset" onclick="setWager(250)">250</button>
+    <button class="preset" onclick="setWagerHalf()">½</button>
+    <button class="preset" onclick="setWagerAll()">All In</button>
+  </div>
+</div>
+
+<div class="multiflip-wrap">
+  <div class="multiflip-label"><span>flip count</span><span id="mfLabel">1 flip</span></div>
+  <div class="multiflip-btns">
+    <button class="mf-btn on" onclick="setMF(1,this)">×1</button>
+    <button class="mf-btn" onclick="setMF(5,this)">×5</button>
+    <button class="mf-btn" onclick="setMF(10,this)">×10</button>
+    <button class="mf-btn" onclick="setMF(25,this)">×25</button>
+    <button class="mf-btn" onclick="setMF(50,this)">×50</button>
+    <button class="mf-btn" onclick="setMF(100,this)">×100</button>
+  </div>
+  <div class="multiflip-progress" id="mfProgress"><div class="multiflip-bar" id="mfBar"></div></div>
+  <div class="multiflip-status" id="mfStatus"></div>
+</div>
+
 <div class="stats">
   <div class="stat hs"><div class="stat-num" id="hN">0</div><div class="stat-label">Heads</div></div>
   <div class="stat"><div class="stat-num" id="tot">0</div><div class="stat-label">Total</div></div>
@@ -411,16 +413,115 @@ h1{font-family:'DM Mono',monospace;font-size:.95rem;font-weight:400;letter-spaci
 <div class="wr" id="wr"></div>
 <div class="bar-wrap"><div class="bar-fill" id="bar"></div></div>
 
+<div class="upgrades-bar" id="upgradesBar"></div>
+
+<button class="shop-open-btn" onclick="openShop()">
+  <div class="shop-open-left">
+    <div class="shop-open-icon">🏪</div>
+    <div>
+      <div class="shop-open-text">Upgrade Shop</div>
+      <div class="shop-open-sub" id="shopBtnSub">Buy upgrades &amp; boosts</div>
+    </div>
+  </div>
+  <div class="shop-open-arrow">▶</div>
+</button>
+
+<div class="auto-status" id="autoStatus">
+  <span class="auto-status-text" id="autoStatusText">Auto-flip running...</span>
+  <button class="auto-stop-btn" onclick="stopAuto()">Stop</button>
+</div>
+
+
+<button class="dim-btn" id="dimBtn" onclick="openDimension()">
+  <div class="dim-btn-border"></div>
+  <div class="dim-left">
+    <div class="dim-icon">🌀</div>
+    <div>
+      <div class="dim-title">Alternate Dimension</div>
+      <div class="dim-sub" id="dimBtnSub">Enter the void — different rules await</div>
+    </div>
+  </div>
+  <div class="dim-right" id="dimBtnRight">ENTER ▶</div>
+</button>
+
+
+<div class="dim-overlay" id="dimOverlay">
+  <canvas class="dim-bg-canvas" id="dimCanvas"></canvas>
+  <div class="dim-content">
+    <div class="dim-header">
+      <div class="dim-dim-name" id="dimName">VOID DIMENSION</div>
+      <div class="dim-tagline" id="dimTagline">where nothing is certain</div>
+    </div>
+    <div class="dim-rules" id="dimRules"></div>
+    <div class="dim-bal" id="dimBal">1,000 🪙</div>
+    <div class="dim-coin-wrap" id="dimCoinWrap">
+      <div class="scene" id="dimScene" style="cursor:pointer" onclick="dimFlip()">
+        <div class="coin" id="dimCoin">
+          <div class="face heads" id="dimFaceH"></div>
+          <div class="face tails" id="dimFaceT"></div>
+        </div>
+      </div>
+    </div>
+    <div class="dim-result" id="dimResult">choose your fate</div>
+    <div class="dim-bet-row">
+      <button class="dim-bet-btn" id="dimBH" onclick="dimSetBet('h')">Heads</button>
+      <button class="dim-bet-btn" id="dimBT" onclick="dimSetBet('t')">Tails</button>
+    </div>
+    <button class="dim-flip-btn" id="dimFlipBtn" onclick="dimFlip()">FLIP</button>
+    <div class="dim-stats">
+      <div class="dim-stat"><div class="dim-stat-num" id="dimH">0</div><div class="dim-stat-lbl">Heads</div></div>
+      <div class="dim-stat"><div class="dim-stat-num" id="dimT">0</div><div class="dim-stat-lbl">Tails</div></div>
+      <div class="dim-stat"><div class="dim-stat-num" id="dimFlips">0</div><div class="dim-stat-lbl">Flips</div></div>
+      <div class="dim-stat"><div class="dim-stat-num" id="dimNet">0</div><div class="dim-stat-lbl">Net</div></div>
+    </div>
+    <button class="dim-exit-btn" onclick="exitDimension()">✕ EXIT DIMENSION</button>
+  </div>
+</div>
+
+<!-- Shop overlay -->
+<div class="shop-overlay" id="shopOverlay" onclick="shopBgClick(event)">
+  <div class="shop-panel">
+    <div class="shop-header">
+      <div class="shop-title">🏪 Upgrade Shop</div>
+      <button class="shop-close" onclick="closeShop()">✕</button>
+    </div>
+    <div class="shop-bal" id="shopBal">Balance: 1,000 🪙</div>
+    <div class="shop-section">Permanent Upgrades</div>
+    <div class="shop-grid" id="shopPermanent"></div>
+    <div class="shop-section" style="margin-top:12px">Temporary Boosts</div>
+    <div class="shop-grid" id="shopTemporary"></div>
+    <div class="shop-section" style="margin-top:12px">Special</div>
+    <div class="shop-grid" id="shopSpecial"></div>
+  </div>
+</div>
+
+<!-- Double or Nothing overlay -->
+<div class="don-overlay" id="donOverlay">
+  <div class="don-box">
+    <h2>🎰 Double or Nothing?</h2>
+    <div class="don-amount" id="donAmount">+0 🪙</div>
+    <div class="don-desc">Risk your entire winnings on one more flip.<br>Win → 2× · Lose → walk away with nothing.</div>
+    <div class="don-btns">
+      <button class="don-yes" onclick="donAccept()">Double It!</button>
+      <button class="don-no" onclick="donDecline()">Take the Win</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Shop overlay -->
 <div class="ach-wrap">
   <div class="ach-head" onclick="toggleAch()"><span>Achievements</span><span id="achProgress">0 / 12</span></div>
   <div id="achGrid" class="ach-grid"></div>
 </div>
+
 
 <div class="hist-wrap">
   <div class="hist-head"><span>Flip history</span><span id="hCnt">0 flips</span></div>
   <div class="hist-list" id="hList"><div style="padding:16px;text-align:center;color:var(--muted);font-family:'DM Mono',monospace;font-size:.73rem;letter-spacing:.1em">no flips yet</div></div>
 </div>
 <div class="hint">space/enter = flip &nbsp;·&nbsp; H/T = bet &nbsp;·&nbsp; R = reset</div>
+
 
 <script>
 // ── Helpers for SVG rim detail
@@ -1104,6 +1205,526 @@ document.addEventListener('keydown',e=>{
   if(e.key==='t'||e.key==='T')setBet('t');
   if(e.key==='r'||e.key==='R')resetAll();
   if(e.key==='s'||e.key==='S')openShop();
+  if(e.key==='Escape')closeShop();
+});
+
+// ═══════════════════════════════════════════════════
+// ██████  ALTERNATE DIMENSIONS  ██████
+// ═══════════════════════════════════════════════════
+
+const DIMENSIONS = [
+  {
+    id: 'mirror',
+    name: 'MIRROR DIMENSION',
+    tagline: 'everything is backwards',
+    color: [255, 100, 200],
+    bgStyle: 'mirror',
+    rules: [
+      {icon:'🪞', text:'Heads and Tails are SWAPPED — you call the opposite of what you mean'},
+      {icon:'💸', text:'Wins pay 0.8× but losses only cost 0.4×'},
+      {icon:'🔄', text:'Streaks run backwards — 3 alternating flips = streak bonus'},
+    ],
+    winMult: 0.8, loseMult: 0.4,
+    swapBet: true,
+    specialRule: 'mirror',
+    btnColor: '#FF64C8', textColor: '#FF64C8', glowColor: '255,100,200',
+    headsSym: '⚡', tailsSym: '👑',
+  },
+  {
+    id: 'void',
+    name: 'THE VOID',
+    tagline: 'probability is just a suggestion',
+    color: [80, 0, 200],
+    bgStyle: 'void',
+    rules: [
+      {icon:'🎲', text:'Coin is WEIGHTED — 65% heads, 35% tails (or vice versa, you never know)'},
+      {icon:'💀', text:'Lose 3 in a row? A curse activates — next win is stolen'},
+      {icon:'⚗️', text:'Win 3 in a row? A blessing activates — next bet is free'},
+    ],
+    winMult: 1.6, loseMult: 0.9,
+    swapBet: false,
+    specialRule: 'void',
+    btnColor: '#5000C8', textColor: '#A78BFA', glowColor: '139,92,246',
+    headsSym: '🌑', tailsSym: '🌕',
+  },
+  {
+    id: 'greed',
+    name: 'DIMENSION OF GREED',
+    tagline: 'more risk, more reward, more ruin',
+    color: [255, 200, 0],
+    bgStyle: 'greed',
+    rules: [
+      {icon:'💰', text:'Every flip your wager automatically doubles'},
+      {icon:'🏆', text:'Win = keep ALL doubled winnings'},
+      {icon:'💥', text:'Lose = lose the FULL doubled amount. Good luck.'},
+    ],
+    winMult: 2.0, loseMult: 2.0,
+    swapBet: false,
+    specialRule: 'greed',
+    btnColor: '#E8B820', textColor: '#F9E07A', glowColor: '232,184,32',
+    headsSym: '💰', tailsSym: '💸',
+  },
+  {
+    id: 'chaos',
+    name: 'CHAOS REALM',
+    tagline: 'the rules change every flip',
+    color: [255, 80, 80],
+    bgStyle: 'chaos',
+    rules: [
+      {icon:'🌪️', text:'Every flip: random multiplier between 0.1× and 5×'},
+      {icon:'🎭', text:'Occasionally the coin has THREE sides (edge = 10× jackpot)'},
+      {icon:'🌀', text:'10% chance the result is reversed after landing'},
+    ],
+    winMult: 1.0, loseMult: 1.0,
+    swapBet: false,
+    specialRule: 'chaos',
+    btnColor: '#FF5050', textColor: '#FCA5A5', glowColor: '255,80,80',
+    headsSym: '🌪️', tailsSym: '🎭',
+  },
+  {
+    id: 'phantom',
+    name: 'PHANTOM REALM',
+    tagline: 'you can\'t see the result until it\'s too late',
+    color: [100, 200, 255],
+    bgStyle: 'phantom',
+    rules: [
+      {icon:'👻', text:'The result is HIDDEN for 3 seconds after landing'},
+      {icon:'🔮', text:'You can change your bet during the reveal window'},
+      {icon:'✨', text:'Correct bet after changing = 3× bonus'},
+    ],
+    winMult: 1.5, loseMult: 0.7,
+    swapBet: false,
+    specialRule: 'phantom',
+    btnColor: '#64C8FF', textColor: '#93C5FD', glowColor: '100,200,255',
+    headsSym: '👻', tailsSym: '🔮',
+  },
+  {
+    id: 'casino',
+    name: 'INFERNO CASINO',
+    tagline: 'the house always... loses?',
+    color: [255, 140, 0],
+    bgStyle: 'inferno',
+    rules: [
+      {icon:'🎰', text:'Streak of 5+ = JACKPOT ROUND — next flip pays 20×'},
+      {icon:'🔥', text:'Every 7th flip is guaranteed heads (the devil\'s number)'},
+      {icon:'😈', text:'Lose more than 500🪙 in here? Debt haunts your main game'},
+    ],
+    winMult: 1.3, loseMult: 0.8,
+    swapBet: false,
+    specialRule: 'casino',
+    btnColor: '#FF8C00', textColor: '#FCD34D', glowColor: '255,140,0',
+    headsSym: '😈', tailsSym: '🎰',
+  },
+];
+
+// Dimension state
+let dimActive = false;
+let currentDim = null;
+let dimBetChoice = null;
+let dimBusy = false;
+let dimH = 0, dimT = 0, dimFlipCount = 0, dimNet = 0;
+let dimWager = 50;
+let dimStreak = 0, dimLast = null;
+let dimBgAnim = null;
+let dimCurseActive = false, dimBlessActive = false;
+let dimNextReveal = false, dimRevealTimeout = null;
+let dimFlipNum = 0;
+let dimVoidBias = 0.65; // void dimension heads probability
+
+// Background animation canvases per dimension
+const dimBgRenderers = {
+  mirror(ctx,w,h,t){
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle='#0A0010';ctx.fillRect(0,0,w,h);
+    // Mirror shards
+    for(let i=0;i<18;i++){
+      const x=w*(.1+.8*((i*137.5)%1));
+      const y=h*(.1+.8*((i*93.7)%1));
+      const sz=20+30*((i*61.3)%1);
+      const rot=t*.3+i;
+      ctx.save();ctx.translate(x,y);ctx.rotate(rot);
+      ctx.fillStyle=`rgba(255,100,200,${.04+.04*Math.sin(t+i)})`;
+      ctx.strokeStyle=`rgba(255,150,220,${.2+.2*Math.sin(t*2+i)})`;
+      ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(0,-sz);ctx.lineTo(sz*.6,sz*.4);ctx.lineTo(-sz*.6,sz*.4);ctx.closePath();
+      ctx.fill();ctx.stroke();ctx.restore();
+    }
+    // Scan lines
+    for(let y=0;y<h;y+=4){ctx.fillStyle='rgba(0,0,0,.15)';ctx.fillRect(0,y,w,2);}
+    // Center mirror line
+    ctx.strokeStyle=`rgba(255,100,200,${.3+.2*Math.sin(t*2)})`;ctx.lineWidth=1.5;
+    ctx.setLineDash([8,4]);ctx.beginPath();ctx.moveTo(w/2,0);ctx.lineTo(w/2,h);ctx.stroke();ctx.setLineDash([]);
+  },
+  void(ctx,w,h,t){
+    ctx.clearRect(0,0,w,h);
+    const grad=ctx.createRadialGradient(w/2,h/2,0,w/2,h/2,w*.7);
+    grad.addColorStop(0,'#0D0028');grad.addColorStop(.5,'#050014');grad.addColorStop(1,'#000008');
+    ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);
+    // Stars/void particles
+    for(let i=0;i<60;i++){
+      const seed=i*137.508;
+      const x=w*((seed*.618)%1);const y=h*((seed*.381)%1);
+      const r=.5+1.5*((seed*.215)%1);
+      const pulse=.3+.7*Math.abs(Math.sin(t*1.5+i*.7));
+      ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(139,92,246,${pulse})`;ctx.fill();
+    }
+    // Void spiral
+    ctx.save();ctx.translate(w/2,h/2);
+    for(let a=0;a<Math.PI*8;a+=.08){
+      const r2=a*6;const x=Math.cos(a+t*.5)*r2;const y=Math.sin(a+t*.5)*r2;
+      ctx.beginPath();ctx.arc(x,y,1.2,0,Math.PI*2);
+      ctx.fillStyle=`rgba(100,50,200,${.15-.01*a})`;ctx.fill();
+    }
+    ctx.restore();
+  },
+  greed(ctx,w,h,t){
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle='#0A0800';ctx.fillRect(0,0,w,h);
+    // Gold rain
+    for(let i=0;i<30;i++){
+      const x=((i*83.7+t*40)%w);
+      const y=((i*137.5+t*60)%h);
+      ctx.font='bold 14px monospace';ctx.fillStyle=`rgba(232,184,32,${.2+.3*((i*.13)%1)})`;
+      ctx.fillText('🪙'[0]||'$',x,y);
+    }
+    // Gold shimmer lines
+    for(let i=0;i<5;i++){
+      const y=h*(.1+i*.18)+20*Math.sin(t+i);
+      const grad=ctx.createLinearGradient(0,y,w,y);
+      grad.addColorStop(0,'transparent');grad.addColorStop(.5,`rgba(232,184,32,.18)`);grad.addColorStop(1,'transparent');
+      ctx.fillStyle=grad;ctx.fillRect(0,y,w,3);
+    }
+    // Pulsing border
+    const borderAlpha=.2+.15*Math.sin(t*3);
+    ctx.strokeStyle=`rgba(232,184,32,${borderAlpha})`;ctx.lineWidth=2;
+    ctx.strokeRect(4,4,w-8,h-8);
+  },
+  chaos(ctx,w,h,t){
+    ctx.clearRect(0,0,w,h);
+    // Chaotic multicolor background
+    const hue=(t*30)%360;
+    ctx.fillStyle=`hsl(${hue},80%,3%)`;ctx.fillRect(0,0,w,h);
+    // Random lightning bolts
+    for(let b=0;b<4;b++){
+      if(Math.sin(t*7+b*2.3)>.7){
+        ctx.strokeStyle=`rgba(255,${100+b*40},${b*60},.6)`;ctx.lineWidth=1.5;
+        ctx.beginPath();
+        let lx=w*(.2+b*.15),ly=0;ctx.moveTo(lx,ly);
+        for(let s=0;s<6;s++){lx+=(Math.random()-.5)*60;ly+=h/6;ctx.lineTo(lx,ly);}
+        ctx.stroke();
+      }
+    }
+    // Spinning geometric shapes
+    for(let i=0;i<6;i++){
+      ctx.save();ctx.translate(w*(.1+i*.16),h*.5+Math.sin(t+i)*h*.2);
+      ctx.rotate(t*(1+i*.3));
+      const c=`hsla(${(hue+i*60)%360},100%,60%,.1)`;
+      ctx.fillStyle=c;ctx.strokeStyle=c.replace('.1)','.4)');ctx.lineWidth=1;
+      ctx.beginPath();
+      const sides=3+i;
+      for(let s=0;s<sides;s++){const a=s/sides*Math.PI*2;ctx.lineTo(Math.cos(a)*25,Math.sin(a)*25);}
+      ctx.closePath();ctx.fill();ctx.stroke();ctx.restore();
+    }
+  },
+  phantom(ctx,w,h,t){
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle='#00080F';ctx.fillRect(0,0,w,h);
+    // Floating ghost orbs
+    for(let i=0;i<12;i++){
+      const x=w/2+Math.cos(t*.4+i/12*Math.PI*2)*(w*.35);
+      const y=h/2+Math.sin(t*.3+i/12*Math.PI*2)*(h*.3)+Math.sin(t+i)*20;
+      const r=8+6*Math.sin(t*2+i);
+      const grad=ctx.createRadialGradient(x,y,0,x,y,r);
+      grad.addColorStop(0,`rgba(100,200,255,${.15+.1*Math.sin(t+i)})`);
+      grad.addColorStop(1,'transparent');
+      ctx.fillStyle=grad;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();
+    }
+    // Mist
+    for(let i=0;i<3;i++){
+      const y=h*(.3+i*.2)+30*Math.sin(t*.5+i);
+      const grad=ctx.createLinearGradient(0,y-20,0,y+20);
+      grad.addColorStop(0,'transparent');grad.addColorStop(.5,'rgba(100,200,255,.04)');grad.addColorStop(1,'transparent');
+      ctx.fillStyle=grad;ctx.fillRect(0,y-20,w,40);
+    }
+  },
+  inferno(ctx,w,h,t){
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle='#0A0000';ctx.fillRect(0,0,w,h);
+    // Fire columns
+    for(let x=0;x<w;x+=30){
+      const flameH=60+40*Math.sin(t*3+x*.05);
+      const grad=ctx.createLinearGradient(x,h,x,h-flameH);
+      grad.addColorStop(0,'rgba(255,50,0,.3)');grad.addColorStop(.5,'rgba(255,140,0,.15)');grad.addColorStop(1,'transparent');
+      ctx.fillStyle=grad;ctx.fillRect(x-8,h-flameH,16,flameH);
+    }
+    // Ember particles
+    for(let i=0;i<25;i++){
+      const seed=i*137.5;
+      const x=((seed*.7+t*20*((seed*.3)%1))%w);
+      const y=h-((seed*.4+t*30)%(h*.6));
+      ctx.beginPath();ctx.arc(x,y,1+((seed*.2)%1),0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,${100+100*((seed*.5)%1)},0,${.4+.3*Math.sin(t+i)})`;
+      ctx.fill();
+    }
+    // 666 faint
+    ctx.font='bold 180px monospace';ctx.fillStyle='rgba(255,40,0,.03)';
+    ctx.textAlign='center';ctx.fillText('666',w/2,h*.6);ctx.textAlign='start';
+  },
+};
+
+function openDimension(){
+  // Pick a random dimension each time
+  currentDim = DIMENSIONS[Math.floor(Math.random()*DIMENSIONS.length)];
+  dimH=0;dimT=0;dimFlipCount=0;dimNet=0;dimStreak=0;dimLast=null;
+  dimBetChoice=null;dimBusy=false;dimCurseActive=false;dimBlessActive=false;
+  dimFlipNum=0;dimWager=Math.min(wager,bal);
+  dimVoidBias=Math.random()<.5?.65:.35;
+
+  const d=currentDim;
+  const ov=document.getElementById('dimOverlay');
+  ov.style.setProperty('--dim-rgb',d.glowColor);
+  document.getElementById('dimName').textContent=d.name;
+  document.getElementById('dimName').style.color=d.textColor;
+  document.getElementById('dimTagline').textContent=d.tagline;
+  document.getElementById('dimTagline').style.color=d.btnColor;
+
+  // Rules
+  document.getElementById('dimRules').innerHTML=d.rules.map(r=>
+    `<div class="dim-rule"><span class="dim-rule-icon">${r.icon}</span><span style="color:rgba(255,255,255,.8)">${r.text}</span></div>`
+  ).join('');
+
+  // Coin faces for this dimension
+  document.getElementById('dimFaceH').innerHTML=FACES[skin].h;
+  document.getElementById('dimFaceT').innerHTML=FACES[skin].t;
+
+  // Style bet buttons
+  document.getElementById('dimBH').textContent=d.swapBet?'↕ Heads (means Tails)':'Heads '+d.headsSym;
+  document.getElementById('dimBT').textContent=d.swapBet?'↕ Tails (means Heads)':'Tails '+d.tailsSym;
+
+  // Style flip btn
+  const fb=document.getElementById('dimFlipBtn');
+  fb.style.background=d.btnColor;
+  fb.style.color=d.id==='void'?'#fff':'#0A0800';
+  fb.textContent='FLIP INTO THE '+d.name.split(' ')[0];
+
+  // Coin glow
+  document.getElementById('dimCoinWrap').style.setProperty('--glow-color',d.btnColor);
+  const afterEl=document.getElementById('dimCoinWrap');
+  afterEl.style.filter=`drop-shadow(0 0 20px ${d.btnColor}44)`;
+
+  // Dim button style
+  document.getElementById('dimBtn').classList.add('active-dim');
+  document.getElementById('dimBtnSub').textContent='Currently in: '+d.name;
+  document.getElementById('dimBtnRight').textContent='IN DIMENSION';
+
+  updateDimUI();
+  ov.classList.add('show');
+  dimActive=true;
+  startDimBg();
+}
+
+function startDimBg(){
+  const canvas=document.getElementById('dimCanvas');
+  const ctx=canvas.getContext('2d');
+  let t=0;
+  const renderer=dimBgRenderers[currentDim.bgStyle]||dimBgRenderers.void;
+  function frame(){
+    if(!dimActive){ctx.clearRect(0,0,canvas.width,canvas.height);return;}
+    canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+    renderer(ctx,canvas.width,canvas.height,t);
+    t+=.016;
+    dimBgAnim=requestAnimationFrame(frame);
+  }
+  frame();
+}
+
+function exitDimension(){
+  dimActive=false;
+  cancelAnimationFrame(dimBgAnim);
+  document.getElementById('dimOverlay').classList.remove('show');
+  document.getElementById('dimBtn').classList.remove('active-dim');
+  document.getElementById('dimBtnSub').textContent='Enter the void — different rules await';
+  document.getElementById('dimBtnRight').textContent='ENTER ▶';
+  // Inferno debt penalty
+  if(currentDim?.id==='casino'&&dimNet<-500){
+    const debt=Math.abs(dimNet)-500;
+    bal=Math.max(0,bal-debt);
+    updateWallet(-debt);drawChart();
+    balHistory.push(bal);
+    resEl.textContent='👻 Inferno debt: -'+debt+'🪙';resEl.className='result t-txt';
+  }
+  currentDim=null;
+}
+
+function dimSetBet(side){
+  if(dimBusy)return;
+  dimBetChoice=side;
+  document.getElementById('dimBH').classList.toggle('on',side==='h');
+  document.getElementById('dimBT').classList.toggle('on',side==='t');
+}
+
+async function dimFlip(){
+  if(dimBusy||!dimBetChoice)return;
+  if(dimWager>bal){document.getElementById('dimResult').textContent='Not enough 🪙!';return;}
+  dimBusy=true;document.getElementById('dimFlipBtn').disabled=true;
+  const d=currentDim;
+
+  // Determine actual coin result
+  let isH;
+  if(d.specialRule==='void') isH=Math.random()<dimVoidBias;
+  else isH=Math.random()<.5;
+
+  dimFlipNum++;
+
+  // Chaos: 5% edge (third side)
+  let isEdge=false;
+  if(d.specialRule==='chaos'&&Math.random()<.05){isEdge=true;isH=null;}
+
+  // Casino: every 7th is heads
+  if(d.specialRule==='casino'&&dimFlipNum%7===0) isH=true;
+
+  // Animate
+  const spins=5+Math.floor(Math.random()*3);
+  const targetY = isEdge ? spins*360+90 : spins*360+(isH?0:180);
+  const dur=1200+Math.floor(Math.random()*400);
+  const dimCoinEl=document.getElementById('dimCoin');
+  dimCoinEl.style.transform='';
+
+  await new Promise(res=>{
+    const start=performance.now();
+    function frame(now){
+      let p=(now-start)/dur;if(p>=1)p=1;
+      const e=1-Math.pow(1-p,3);
+      dimCoinEl.style.transform=`rotateY(${targetY*e}deg) scale(${1+.15*Math.sin(p*Math.PI)})`;
+      if(p<1)requestAnimationFrame(frame);else{dimCoinEl.style.transform=`rotateY(${targetY}deg) scale(1)`;res();}
+    }
+    requestAnimationFrame(frame);
+    if(soundOn) playFlip();
+  });
+
+  // Phantom: hide result
+  if(d.specialRule==='phantom'){
+    dimCoinEl.style.filter='blur(12px)';
+    document.getElementById('dimResult').textContent='👻 Hidden... bet again to change!';
+    document.getElementById('dimResult').style.color='#93C5FD';
+    await new Promise(res=>setTimeout(res,2500));
+    dimCoinEl.style.filter='';
+  }
+
+  // Chaos: 10% reversal
+  let reversed=false;
+  if(d.specialRule==='chaos'&&!isEdge&&Math.random()<.1){isH=!isH;reversed=true;}
+
+  // Void curse/blessing
+  let curseSteals=false,blessFree=false;
+  if(d.specialRule==='void'){
+    if(dimCurseActive&&isH===true){curseSteals=true;dimCurseActive=false;}
+    if(dimBlessActive){blessFree=true;dimBlessActive=false;}
+  }
+
+  // Resolve bet
+  let effectiveBet=dimBetChoice;
+  if(d.swapBet) effectiveBet=dimBetChoice==='h'?'t':'h';
+  const won=isEdge?true:(effectiveBet==='h'?isH:!isH);
+
+  // Compute payout
+  let curWager=dimWager;
+  if(d.specialRule==='greed') curWager=Math.min(dimWager*Math.pow(2,Math.min(dimStreak,6)),bal);
+
+  let mult=won?d.winMult:d.loseMult;
+  if(d.specialRule==='chaos'){ mult=won?(0.3+Math.random()*4.7):(0.3+Math.random()*1.7); }
+  if(isEdge){ mult=10; }
+  if(d.specialRule==='casino'&&dimStreak>=5&&won) mult=20;
+  if(d.specialRule==='phantom'&&dimBetChoice!==null&&reversed&&won) mult=3;
+
+  let delta=0;
+  if(isEdge){
+    delta=Math.round(curWager*mult);bal+=delta;dimNet+=delta;
+  } else if(won&&!curseSteals){
+    delta=blessFree?0:Math.round(curWager*mult);
+    bal+=delta;dimNet+=delta;
+  } else if(curseSteals){
+    delta=-Math.round(curWager*d.loseMult);bal=Math.max(0,bal+delta);dimNet+=delta;
+  } else {
+    delta=-Math.round(curWager*mult);bal=Math.max(0,bal+delta);dimNet+=delta;
+  }
+  balHistory.push(bal);updateWallet(delta);drawChart();
+
+  // Update streak
+  const outcomeKey=isH?'h':'t';
+  dimStreak=(dimLast===outcomeKey)?dimStreak+1:1; dimLast=outcomeKey;
+  if(isH!==null) isH?dimH++:dimT++;
+  dimFlipCount++;
+
+  // Void curse/bless checks
+  if(d.specialRule==='void'){
+    if(!won){const lStreak=dimT;if(lStreak>=3)dimCurseActive=true;}
+    if(won){if(dimStreak>=3)dimBlessActive=true;}
+  }
+
+  // Result text
+  let resultText='';
+  if(isEdge) resultText='🌀 EDGE — JACKPOT! +'+delta+'🪙';
+  else if(reversed) resultText=(isH?'Heads':'Tails')+' (REVERSED!) '+(won?'+':'')+delta+'🪙';
+  else if(curseSteals) resultText='💀 CURSED — win stolen! '+delta+'🪙';
+  else if(blessFree) resultText=(isH?'Heads':'Tails')+' FREE BET! +0🪙 (blessed)';
+  else resultText=(isH===null?'EDGE':isH?'Heads':'Tails')+(won?' ✓':' ✗')+' '+(delta>=0?'+':'')+delta+'🪙';
+
+  const dr=document.getElementById('dimResult');
+  dr.textContent=resultText;
+  dr.style.color=won||isEdge?d.textColor:'#F87171';
+
+  if(won||isEdge){confetti(isEdge||dimStreak>=5);if(soundOn)playWin();}
+  else{if(soundOn)playLose();}
+
+  updateDimUI();
+  dimBusy=false;document.getElementById('dimFlipBtn').disabled=false;
+  dimBetChoice=null;
+  document.getElementById('dimBH').classList.remove('on');
+  document.getElementById('dimBT').classList.remove('on');
+}
+
+function updateDimUI(){
+  const d=currentDim; if(!d) return;
+  document.getElementById('dimBal').textContent=bal.toLocaleString()+' 🪙';
+  document.getElementById('dimH').textContent=dimH; document.getElementById('dimH').style.color=d.textColor;
+  document.getElementById('dimT').textContent=dimT;
+  document.getElementById('dimFlips').textContent=dimFlipCount;
+  const netEl=document.getElementById('dimNet');
+  netEl.textContent=(dimNet>=0?'+':'')+dimNet;
+  netEl.style.color=dimNet>=0?'#4ADE80':'#F87171';
+  // Wager display
+  let wagerLabel=dimWager.toLocaleString()+' 🪙';
+  if(d.specialRule==='greed') wagerLabel=Math.min(dimWager*Math.pow(2,Math.min(dimStreak,6)),bal).toLocaleString()+' 🪙 (doubled)';
+  document.getElementById('dimFlipBtn').title='Wager: '+wagerLabel;
+  // Status effects
+  const extras=[];
+  if(dimCurseActive) extras.push('💀 CURSED');
+  if(dimBlessActive) extras.push('✨ BLESSED');
+  if(extras.length) document.getElementById('dimTagline').textContent=extras.join(' · ');
+  else document.getElementById('dimTagline').textContent=d.tagline;
+}
+
+// Add dimension button to the dimension button sub when a dimension was played
+const _origResetAll=resetAll;
+// (resetAll already resets everything, dimension state is separate)
+
+updateWallet(0);drawChart();updatePayoutLabels();renderAch();setShadow(1);renderXP();renderUpgradesBar();
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('dimOverlay').classList.contains('show')){
+    if(e.key==='Escape')exitDimension();
+    if(e.key===' '||e.key==='Enter'){e.preventDefault();dimFlip();}
+    if(e.key==='h'||e.key==='H')dimSetBet('h');
+    if(e.key==='t'||e.key==='T')dimSetBet('t');
+    return;
+  }
+  if(e.key===' '||e.key==='Enter'){e.preventDefault();startFlipSequence();}
+  if(e.key==='h'||e.key==='H')setBet('h');
+  if(e.key==='t'||e.key==='T')setBet('t');
+  if(e.key==='r'||e.key==='R')resetAll();
+  if(e.key==='s'||e.key==='S')openShop();
+  if(e.key==='d'||e.key==='D')openDimension();
   if(e.key==='Escape')closeShop();
 });
 </script>
